@@ -1,0 +1,21 @@
+@keyframes moveMenu{
+    from {
+        position: absolute;
+        top: -200px;
+        opacity: 0%;
+    }
+    to {
+        position: absolute;
+        top: 0px;
+        opacity: 100%;
+    }
+}
+
+@keyframes displayEditor{
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+}

@@ -1,0 +1,28 @@
+@for $i from 1 to 4 {
+    .title-#{$i}{
+        font-size: $i + 1rem;
+        font-family: $base-title-family;
+        margin: 0 $base-margin;
+        padding: 0 $base-padding;
+        font-weight: $font-weight-xlight;
+        -webkit-text-stroke: 1px #0000009a;
+
+        @include xs{
+            font-size: $i - 0.5rem;
+        }
+        @include md{
+            font-size: $i + 1rem;
+        }
+    }
+}
+
+.mini-title{
+    display: inherit;
+    padding: 0px;
+    margin: 0px 0px 5px 0px;
+    font-weight: $font-weight-light;
+    font-family: $base-title-family;
+
+}
+
+

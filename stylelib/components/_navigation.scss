@@ -1,0 +1,102 @@
+//Nav header toggle buttons area
+.nav-dropdown{
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: fixed;
+    height: 1vh;
+    z-index: 1;
+    i{
+        font-size: $font-size-xs;
+    }
+}
+
+.title-dropdown{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.buttons-nav-dropdown{
+    display: flex;
+    flex-direction: row;
+}
+
+//Top header styles for formatting - for any color related styles go to color.scss
+//Main options
+.navigation{
+    width: 100vw;
+    position: absolute;
+    animation: none;
+    animation-duration: 0s;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 0px 0px $bradius-round $bradius-round;
+    @include xs{
+        flex-direction: column;
+        justify-content: center;
+    }
+    @include breakpoint(1025px){
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.main-menu-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: $top-padding $side-padding;
+}
+
+.main-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.file-name-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.file-name{
+    padding: $base-padding $side-padding;
+    border-radius: $base-border-radius;
+    margin: $base-margin $side-margin;
+
+}
+
+.save-icon{
+    font-size: medium;
+}
+
+
+//Color selectors main menu
+.main-menu-corner{
+    border-left: 1px solid $grey;
+    padding-left: $base-padding*2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    @include xs{
+        flex-direction: row;
+        border-left: none;
+        border-top: 1px solid $grey;
+    }
+    @include breakpoint(1025px){
+        flex-direction: column;
+        justify-content: space-between;
+        border-left: 1px solid $grey;
+        border-top: none;
+    }
+
+}
+
+.picker-btn{
+    display: none;
+}
