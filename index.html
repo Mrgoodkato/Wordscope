@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Wordscope</title>
+
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+
+        <!-- P5 scripts loadup -->
+        <script defer src="libraries/p5.min.js"></script>
+        <script defer src="libraries/p5.sound.min.js"></script>
+        <!-- fontawesome cdn For Icons -->
+        <script defer src="https://kit.fontawesome.com/798217d397.js" crossorigin="anonymous"></script>   
+
+  </head>
+
+  <body>
+
+<nav class="nav-dropdown">
+        <div class="title-dropdown">
+        <h1 id="title-drop" class="text-grey mini-title">Wordscope</h1>
+        <div class="buttons-nav-dropdown">
+        <a href="#" id="show-textarea-btn-drop" class="btn-orange-light-3 button-display-nav-right">
+                <div><i class="fa-solid fa-i-cursor"></i></div></a>
+        <a href="#" id="navbar-show" class="btn-blue-dark-4 button-display-nav-left">
+                <div><i class="fa-solid fa-caret-down"></i></div></a>
+        </div>
+        </div>
+        
+
+</nav>
+
+<nav id="navbar" class="navigation bg-blue-dark-1">
+        <div class="main-menu-wrapper">
+                <h1 class="text-grey title-3">Wordscope</h1>
+                <div class="main-menu">
+                        
+                        <!-- Writting button -->
+                        <a href="#" id="show-textarea-btn" class="btn-orange-light-3 button-write">
+                        <div><p>Start Writing</p></div>
+                        <div><i class="fa-solid fa-i-cursor"></i></div>
+                        </a>
+                        
+                        <!-- Save menu -->
+                        <div class="button-save">
+                                <a href="#" id="save-txt" class="btn-blue-dark-4"><i class="fa-solid fa-file-lines save-icon"></i></a>
+                                <a href="#" id="save-pdf" class="btn-blue-dark-4"><i class="fa-solid fa-file-pdf save-icon"></i></a>
+                                <a href="#" id="save-word" class="btn-blue-dark-4"><i class="fa-solid fa-file-word save-icon"></i></a>
+                        </div>
+                </div>
+                <input id="file" class="file-name input-blue-light-4" type="text" placeholder="Your writing name here" />
+        </div>
+        <div class="main-menu-corner">
+
+                <!-- Color pickers -->
+                <label for="dot-color-picker">
+                        <a id="show-textarea-btn" class="btn-outline-blue-light-3 button-color">
+                                <div><p>Primary color</p></div>
+                                <div><i class="fa-solid fa-palette"></i></div>
+                                </a>
+                        <input type="color" name="dotcolor" class="picker-btn" id="dot-color-picker" value="#605A30"/>
+                </label>
+
+                <label for="background-color-picker">
+                        <a id="show-textarea-btn" class="btn-outline-blue-light-3 button-color">
+                                <div><p>Secondary color</p></div>
+                                <div><i class="fa-solid fa-palette"></i></div>
+                                </a>
+                        <input type="color" name="bckcolor" class="picker-btn" id="background-color-picker" value="#111111"/>
+                </label>
+                
+                
+        </div>
+</nav>
+<div id="overlay" class="overlay-style">
+        <!-- TEXT AREA WHERE WE GRAB ALL TEXT AND DO THE MAGIC -->
+        <div id="modal" class="modal-style bg-blue-dark-4">
+                <div id="modalheader" class="modal-header-style">
+                        <div class="header-items">
+                                <!-- Close button -->
+                                <a href="#" id="close-textarea-btn" class="btn-blue-light-4">Close</a>
+                        </div>
+                        <div class="header-items">
+                                <!-- Close button -->
+                                <i class="fa-solid fa-arrows-up-down-left-right text-blue-dark-4"></i>
+                        </div>
+                      
+                </div>
+                <div class="op-btn-cont">
+                        <div class="text-options">
+                                <!-- Base text options -->
+                                <a href="#" id="bold-btn" class="btn-blue-dark-4" style="font-weight: bolder;">B</a>
+                                <a href="#" id="italic-btn" class="btn-blue-dark-4" style="font-style: italic; font-weight: lighter;">I</a>
+                                <a href="#" id="underline-btn" class="btn-blue-dark-4" style="text-decoration: underline; font-weight: lighter;">U</a>
+                        </div>
+                        <div class="text-options-drop">
+                                <!-- Toggle sizes -->
+                                <div class="dropdown">
+                                        <a class="btn-blue-dark-3">Font Size</a>
+                                        <div class="dropdown-menu">
+                                                <a href="#" class="btn-grey btn-size" name="10px">Small</a>
+                                                <a href="#" class="btn-grey btn-size" name="14px">Medium</a>
+                                                <a href="#" class="btn-grey btn-size" name="16px">Large</a>
+                                                <a href="#" class="btn-grey btn-size" name="22px">X Large</a>
+                                        </div>
+                                </div>
+                                <!-- Toggle align -->
+                                <div class="dropdown">
+                                        <a id="align-btn" class="btn-blue-dark-3">Align Text</a>
+                                        <div class="dropdown-menu">
+                                                <a href="#" class="btn-grey btn-align" name="left">Left</a>
+                                                <a href="#" class="btn-grey btn-align" name="center">Center</a>
+                                                <a href="#" class="btn-grey btn-align" name="right">Right</a>
+                                                <a href="#" class="btn-grey btn-align" name="justify">Justify</a>
+                                        </div>
+                                </div>
+                                <!-- Text Color -->
+                                <label for="color-btn">
+                                        <a id="show-textarea-btn" class="btn-blue-dark-2 button-color">
+                                                <div><p>Text Color</p></div>
+                                                <div><i class="fa-solid fa-palette"></i></div>
+                                                </a>
+                                        <input type="color" name="txtcolor" class="picker-btn" id="color-btn" value="#81b4b6"/>
+                                </label>
+                                
+                        </div>
+                </div>
+                <div class="text-area" id="containerText">
+                        <div id="textarea1" class="textbox" contenteditable="true"></div>
+                </div>
+        </div>
+</div>
+
+<footer class="footer">
+        <div><a data-="theme-blue" href="#" class="btn-outline-blue-dark-3 button-display-foot-left"><i class="fa-solid fa-droplet"></i></a></dir>
+        <div><a data-="theme-purple" href="#" class="btn-outline-purple-dark-3 button-display-foot-center"><i class="fa-solid fa-droplet"></i></a></dir>
+        <div><a data-="theme-aquablue" href="#" class="btn-outline-aquablue-dark-3 button-display-foot-center"><i class="fa-solid fa-droplet"></i></a></dir>
+        <div><a data-="theme-green" href="#" class="btn-outline-green-dark-3 button-display-foot-center"><i class="fa-solid fa-droplet"></i></a></dir>
+        <div><a data-="theme-golden" href="#" class="btn-outline-golden-dark-3 button-display-foot-center"><i class="fa-solid fa-droplet"></i></a></dir>
+        <div><a data-="theme-red" href="#" class="btn-outline-red-dark-3 button-display-foot-right"><i class="fa-solid fa-droplet"></i></a></dir>
+</footer>
+
+        <!-- JQuery script js -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- jsPDF library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+        <!-- My scripts -->
+        <script src="scripts/color/colorChoose.js"></script>        
+        <script src="scripts/modal.js"></script>
+        <script src="scripts/textBox.js"></script>
+        <script src="scripts/dictionary/dictionary.js"></script>
+        <script src="scripts/wordCounter.js"></script>
+        <script src="scripts/sketch.js"></script>
+        <script src="scripts/classes/input.js"></script>
+        <script src="scripts/classes/dots.js"></script>
+        <script src="scripts/classes/populatingFun.js"></script>
+  </body>
+</html>

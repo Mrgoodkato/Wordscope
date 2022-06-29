@@ -1,0 +1,16 @@
+//Base properties
+html, body{
+    font-family: $base-content-family;
+    background-color: $dark;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+
+//Modal display default
+#overlay{
+    display: none;
+}
+
+

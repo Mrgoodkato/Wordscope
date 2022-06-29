@@ -1,0 +1,69 @@
+@use 'sass:math';
+
+/* SCSS HEX */
+$blue: #453F93;
+$purple: #6B358D;
+$aquablue: #346488;
+$green: #2EAC2E;
+$golden: #D5D328;
+$orange: #C87C00;
+$red: #C82300;
+$grey: #DDDDDD;
+$dark: #0E0E0E;
+
+$colors: (
+   "blue": $blue,
+   "purple": $purple,
+   "aquablue": $aquablue,
+   "green": $green,
+   "golden": $golden,
+   "orange": $orange,
+   "red": $red,
+   "grey": $grey,
+   "dark": $dark,
+   "white": #FFFFFF,
+   "black": #000000
+);
+
+//Colors neutral, out of map
+$transLight: #dddddd60;
+$transDark: #000000bb;
+
+//Padding
+$base-padding: 0.5rem;
+$side-padding: 1rem;
+$top-padding: 1rem;
+$bottom-padding: 1rem;
+
+//Margin
+$base-margin: 0.5rem;
+$side-margin: 1rem;
+
+//Border
+$base-border-thickness: 0.2rem;
+$base-border-radius: 0.5rem;
+$bradius-med: $base-border-radius *2;
+$bradius-round: $base-border-radius *4;
+
+//Box Shadow
+$base-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+
+//Font size
+$base-font-size: 1rem;
+$font-size-xs: $base-font-size * 0.60;
+$font-size-sm: $base-font-size * 0.75;
+$font-size-lg: $base-font-size * 1.5;
+$font-size-xl: $base-font-size * 2;
+
+//Font family and styles
+$base-title-family: 'Archivo Black', sans-serif;
+$base-content-family: 'Work Sans', sans-serif;
+$base-font-weight: 500;
+$font-weight-xlight: math.div($base-font-weight, 4);
+$font-weight-light: math.div($base-font-weight, 2);
+$font-weight-medium: $base-font-weight + 100;
+$font-weight-bold: $base-font-weight * 2;
+
+//Widths and heights
+$base-width: 400px;
+$base-height: 400px;

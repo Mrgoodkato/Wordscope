@@ -1,0 +1,183 @@
+@mixin button-base($val, $outline: true){
+    margin: $base-margin;
+    padding: $base-padding $side-padding;
+    border-radius: $base-border-radius;
+    border-color: $aquablue;
+    font-family: $base-content-family;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    cursor: pointer;
+
+    @if $outline {
+        background-color: none;
+        color: $val;
+    } @else {
+        background-color: $val;
+        color: invert($val);
+    }
+
+    border: 1px solid $val !important;
+
+    &:link, &:active, &:visited{
+        text-decoration: none;
+    }
+
+    &:hover{
+        background-color: invert($val);
+        color: $val;
+    }
+}
+
+
+@mixin button-base-light ($val, $i, $outline: true){
+    margin: $base-margin;
+    padding: $base-padding $side-padding;
+    border-radius: $base-border-radius;
+    border-color: $aquablue;
+    font-family: $base-content-family;
+    font-size: $font-size-sm;
+    cursor: pointer;
+    
+    @if $outline {
+        background-color: none;
+        color: lighten($val, $i*8);
+    } @else {
+        background-color: lighten($val, $i*8);
+        color: darken($val, $i*8);
+    }
+
+    border: 1px solid $val !important;
+
+    &:link, &:active, &:visited{
+        font-weight: $font-weight-bold;
+        text-decoration: none;
+    }
+
+    &:hover{
+        background-color: darken($val, $i*8);
+        color: lighten($val, $i*8);
+    }
+}
+
+@mixin button-base-dark ($val, $i, $outline: true){
+    margin: $base-margin;
+    padding: $base-padding $side-padding;
+    border-radius: $base-border-radius;
+    border-color: $aquablue;
+    font-family: $base-content-family;
+    font-size: $font-size-sm;
+    cursor: pointer;
+    
+    @if $outline {
+        background-color: none;
+        color: darken($val, $i*8);
+    } @else {
+        background-color: darken($val, $i*8);
+        color: lighten($val, $i*8);
+    }
+
+    border: 1px solid $val !important;
+
+    &:link, &:active, &:visited{
+        font-weight: $font-weight-bold;
+        text-decoration: none;
+    }
+
+    &:hover{
+        background-color: lighten($val, $i*8);
+        color: darken($val, $i*8);
+    }
+}
+
+//Color buttons format
+
+.button-color{
+    width: 7rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    p{
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+.button-write{
+    width: 10rem;
+    height: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-save{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+@mixin button-display-nav($side: "left") {
+    width: 3rem;
+    height: 0.25rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px !important;
+    @if $side == "left" {
+        border-radius: 0px 0px $bradius-round 0px !important;
+        border-left: 0px !important;
+    } @else {
+        border-radius: 0px 0px 0px $bradius-round !important;
+        border-right: 0px !important;
+    }
+}
+
+.button-display-nav-right{
+    @include button-display-nav($side: "right");
+
+}
+
+.button-display-nav-left{
+    @include button-display-nav($side: "left");
+
+}
+
+@mixin button-display-foot($side: "center") {
+    width: 0.5rem;
+    height: 0.25rem;
+    font-size: 0.5rem !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px !important;
+    @if $side == "left" {
+        border-radius: $bradius-round 0px 0px 0px !important;
+        border-left: 0px !important;
+    } @else if $side == "right" {
+        border-radius: 0px $bradius-round 0px 0px !important;
+        border-right: 0px !important;
+    } @else {
+        border-radius: 0px !important;
+    }
+}
+
+.button-display-foot-left{
+    @include button-display-foot($side: "left");
+}
+
+
+.button-display-foot-center{
+    @include button-display-foot($side: "center");
+}
+
+
+.button-display-foot-right{
+    @include button-display-foot($side: "right");
+}

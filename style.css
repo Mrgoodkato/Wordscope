@@ -1,0 +1,155 @@
+body{
+  background-color: black;
+}
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 5px;
+  overflow: hidden;
+  background-color: #1A2627;
+}
+
+.navigation{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.overlay-style{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.200);
+}
+
+.file-name{
+  font-size: small;
+  padding: 7px;
+  margin-left: 50px;
+  font-size: x-small;
+  border-radius: 5px;
+  border: none;
+  background-color: #101818;
+  color: #fffcee;
+  
+}
+
+.picker-btn{
+  height: 20px;
+  width: 20px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  overflow: hidden;
+  background-color: #19333400;
+  border-color: #19181B; 
+}
+
+/* Buttons styles override */
+
+.btn-outline-primary{
+  color: #e4c00a !important;
+  border-color: #19333400 !important;
+  font-size: smaller;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: left;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:visited{
+  color: #243839 !important;
+  background-color: #e8e26f !important;
+  border-color: #1A2627 !important;
+  font-size: smaller;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.btn-outline-primary:focus{
+  box-shadow: inset 0 1px 1px 1px #e8e26f, 0 0 2px #f6eaa7 !important;
+  border-color: #1A2627 !important;
+}
+
+.dropdown-menu{
+  background-color: #19181B !important;
+}
+.dropdown-item{
+  color: #81b4b6 !important;
+  font-size: smaller;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.dropdown-item:hover{
+  color: #19181B !important;
+}
+
+.op-btn-cont{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  background-color: #101818;
+}
+
+.text-options{
+  display: inherit;
+  align-items: center;
+  height: 30px;
+}
+
+.text-options-drop{
+  display: inherit;
+  align-items: center;
+  height: 30px;
+}
+
+.txt-op-btn{
+  font-size: 10px;
+}
+.txt-op-btn:hover{
+  font-size: 10px;
+}
+
+.color-op-btn{
+  height: 20px;
+  width: 20px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  overflow: hidden;
+  background-color: #19333400;  
+}
+
+.modal-style{
+  width: auto;
+  height: 300px;
+  position: absolute;
+  cursor: move;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.modal-header-style{
+  opacity: 80%;
+  background-color: #193334;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.textbox{
+  opacity: 80%;
+  resize: both;
+  padding: 10px;
+  background-color: #19181B;
+  font-size: smaller;
+  color: #beb9d9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-color: #19181B;
+  outline: none;
+  width: 500px;
+  height: 200px;
+  min-width: 500px;
+  min-height: 100px;
+  cursor: text;
+  resize: both;
+  overflow-y: auto;
+}
