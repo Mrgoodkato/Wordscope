@@ -1,0 +1,2 @@
+# Wordscope
+ Graphic text creator
