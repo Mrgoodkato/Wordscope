@@ -10,22 +10,43 @@ const themes = document.querySelectorAll("[data-]");
 //Elements with colors to be changed in HTML
 const themeElements = document.querySelectorAll("[data-color]");
 
+const colors = ['blue', 'purple', 'aquablue', 'green', 'golden', 'red', 'orange'];
+
+
 themes.forEach(theme => {
     theme.addEventListener('click', ()=>{
-        console.log(theme.getAttribute('data-'));
+        changeTheme(theme.getAttribute('data-'));
 
-    })
+    });
 });
 
 //Function that will search and replace into the html element the class color
-/* function changeTheme(setColor){
+function changeTheme(setColor){
 
   themeElements.forEach(element => {
-        let oldTheme = element.classList.value;
-        console.log(element.classList.value.replace(/blue/gm, 'red'));
-        let newTheme = element.classList.value.replace(/blue/gm, 'red');
-        element.classList.replace(oldTheme, newTheme);
+
+    let oldColor = new RegExp('-' + themeGet(element) + '-', 'g');
+    let newColor = '-' + setColor + '-';
+    let regExp = new RegExp('(?:[\\S]*' + themeGet(element) + '[\\S]*)', 'gm');
+    let oldTheme = element.classList.value.match(regExp);
+    let newTheme = oldTheme[0].replace(oldColor, newColor);
+/*     console.log(oldTheme[0], newTheme);
+ */    element.classList.replace(oldTheme[0], newTheme);
+    
 
   });  
 
-}; */
+};
+
+//Helper function to check an element in the data-color attribute for the color being used at the moment
+//Returns that color as string
+function themeGet(element){
+  for(let i = 0; i < colors.length; i++){
+    
+    let regExpTmp = new RegExp('-' + colors[i] + '-', 'g');
+    let isThere = regExpTmp.test(element.classList.value);
+
+    if(isThere) return colors[i]; 
+
+  };
+};
