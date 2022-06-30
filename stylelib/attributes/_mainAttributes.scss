@@ -1,0 +1,15 @@
+//Here we define several mixins that are shared among all of our site
+
+@mixin flex-container($direction: "column", $alignItems: "center", $justifyContent: "center", $visible: true){
+    @if $visible{
+        display: flex;
+    }@else{
+        display: none;
+    }
+    
+    flex-direction: $direction;
+    align-items: $alignItems;
+    justify-content: $justifyContent;
+    flex-wrap: wrap;
+}
+

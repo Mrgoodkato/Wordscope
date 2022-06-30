@@ -1,9 +1,7 @@
 //Nav header toggle buttons area
 .nav-dropdown{
     width: 100vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    @include flex-container(row, baseline, center);
     position: fixed;
     height: 1vh;
     z-index: 1;
@@ -13,13 +11,10 @@
 }
 
 .title-dropdown{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex-container(column, center, center);
 }
 .buttons-nav-dropdown{
-    display: flex;
-    flex-direction: row;
+    @include flex-container(row);
 }
 
 //Top header styles for formatting - for any color related styles go to color.scss
@@ -29,10 +24,7 @@
     position: absolute;
     animation: none;
     animation-duration: 0s;
-    display: none;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    @include flex-container(row, center, space-between, false);
     border-radius: 0px 0px $bradius-round $bradius-round;
     @include xs{
         flex-direction: column;
@@ -45,21 +37,16 @@
 }
 
 .main-menu-wrapper{
-    display: flex;
-    flex-direction: column;
+    @include flex-container(column);
     padding: $top-padding $side-padding;
 }
 
 .main-menu{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    @include flex-container(row, center, space-between);
 }
 
 .file-name-container{
-    display: flex;
-    justify-content: flex-end;
+    @include flex-container(column, center, flex-end);
 }
 
 .file-name{
@@ -78,11 +65,7 @@
 .main-menu-corner{
     border-left: 1px solid $grey;
     padding-left: $base-padding*2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    @include flex-container(column, center, space-between);
     @include xs{
         flex-direction: row;
         border-left: none;

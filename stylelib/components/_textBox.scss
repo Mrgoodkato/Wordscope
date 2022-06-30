@@ -9,15 +9,12 @@
     background-color: $transLight;
     border-radius: $base-border-radius;
     position: absolute;
-    display: flex;
-    flex-direction: column;
+    @include flex-container(column);
     resize: both;
 }
 
 .modal-header-style{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+    @include flex-container(row, center, space-between);
     margin: 0px;
     cursor: move;
     a{
@@ -31,16 +28,12 @@
 }
 
 .header-items{
-    display: inherit;
-    align-items: center;
+    @include flex-container(row, center);
+
 }
 
 .op-btn-cont{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
+    @include flex-container(row, center, space-between);
     background-color: $dark;
     a{
         border: none !important;
@@ -50,17 +43,11 @@
 }
 
 .text-options{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    
+    @include flex-container(row, center, space-between);    
 }
 
 .text-options-drop{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
+    @include flex-container(row, baseline, space-between);
 }
 
 .textbox{

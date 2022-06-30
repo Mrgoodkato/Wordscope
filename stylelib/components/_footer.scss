@@ -2,10 +2,7 @@
     width: 100vw;
     bottom: 0;
     position: fixed;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    @include flex-container(row, center, center);
     div{
         display: flex;
     }
