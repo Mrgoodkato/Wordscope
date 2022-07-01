@@ -42,7 +42,7 @@ class Dots{
         noStroke();
         push();
         translate(xMove, yMove);
-        ellipse(this.x, this.y, this.size);
+        ellipse(this.x, this.y, this.size+random(1,2));
         if(this.showDisplay == true) {
             let information = this.str + '| Repeated -- ' + this.repeat + ' times';
             fill(25);
