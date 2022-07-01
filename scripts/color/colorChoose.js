@@ -10,13 +10,46 @@ const themes = document.querySelectorAll("[data-]");
 //Elements with colors to be changed in HTML
 const themeElements = document.querySelectorAll("[data-color]");
 
-const colors = ['blue', 'purple', 'aquablue', 'green', 'golden', 'red', 'orange'];
+const colorsMap = [
+  blue = {
+    name: 'blue',
+    primary: '#121249',
+    secondary: '#0B0514',
+  },
+  purple = {
+    name: 'purple',
+    primary: '#381249',
+    secondary: '#120619',
+  },
+  aquablue = {
+    name: 'aquablue',
+    primary: '#123C49',
+    secondary: '#060F19',
+  },
+  green = {
+    name: 'green',
+    primary: '#124920',
+    secondary: '#06190F',
+  },
+  golden = {
+    name: 'golden',
+    primary: '#494512',
+    secondary: '#161906',
+  },
+  red = {
+    name: 'red',
+    primary: '#491212',
+    secondary: '#190606',
+  }
+]
 
 
-themes.forEach(theme => {
+themes.forEach((theme, indx) => {
     theme.addEventListener('click', ()=>{
-        changeTheme(theme.getAttribute('data-'));
-
+        let themeName = theme.getAttribute('data-');
+        changeTheme(themeName);
+        let mapObj = colorsMap[indx];
+        changeCanvas(mapObj);
     });
 });
 
@@ -25,13 +58,13 @@ function changeTheme(setColor){
 
   themeElements.forEach(element => {
 
-    let oldColor = new RegExp('-' + themeGet(element) + '-', 'g');
+    let oldColor = themeGet(element);
+    let oldColorClass = new RegExp('-' + oldColor + '-', 'g');
     let newColor = '-' + setColor + '-';
-    let regExp = new RegExp('(?:[\\S]*' + themeGet(element) + '[\\S]*)', 'gm');
+    let regExp = new RegExp('(?:[\\S]*' + oldColor + '[\\S]*)', 'gm');
     let oldTheme = element.classList.value.match(regExp);
-    let newTheme = oldTheme[0].replace(oldColor, newColor);
-/*     console.log(oldTheme[0], newTheme);
- */    element.classList.replace(oldTheme[0], newTheme);
+    let newTheme = oldTheme[0].replace(oldColorClass, newColor);
+    element.classList.replace(oldTheme[0], newTheme);
     
 
   });  
@@ -41,12 +74,20 @@ function changeTheme(setColor){
 //Helper function to check an element in the data-color attribute for the color being used at the moment
 //Returns that color as string
 function themeGet(element){
-  for(let i = 0; i < colors.length; i++){
-    
-    let regExpTmp = new RegExp('-' + colors[i] + '-', 'g');
+  let finalColor;
+  colorsMap.forEach(color => {
+
+    let regExpTmp = new RegExp('-' + color.name + '-', 'g');
     let isThere = regExpTmp.test(element.classList.value);
-
-    if(isThere) return colors[i]; 
-
-  };
+    if(isThere) {
+      finalColor = color.name;
+    };
+  });
+  return finalColor;
 };
+
+//Function to change the canvas primary and secondary colors according to the object in the colorsMap array
+function changeCanvas(mapObj){
+  colorPicker.value = mapObj.primary;
+  backgroundColor.value = mapObj.secondary;
+}
