@@ -53,7 +53,7 @@ function drawDots(dots){
     
     for(let str in dots){
         dots[str].moveDot(); 
-        if(dots[str].creationValue >= dots[str].size) dots[str].dotBirth();
+        dots[str].dotBirth();
         dots[str].createPoint();
         
     }

@@ -1,10 +1,12 @@
 //Variables used through the program
-var widthTxtArea = document.getElementById('textarea1').offsetWidth;
-var heightTxtArea = document.getElementById('textarea1').offsetHeight;
+const widthTxtArea = document.getElementById('textarea1').offsetWidth;
+const heightTxtArea = document.getElementById('textarea1').offsetHeight;
 //Selects all words in the array introduced and separates them
-var regex = /[\u00C0-\u00FF\w]*[\w\u00C0-\u00FF\w]/gm;
+const regex = /[\u00C0-\u00FF\w]*[\w\u00C0-\u00FF\w]/gm;
+//Selects digits for object oriented array to be replaced with (-number-) to avoid indexing errors
+const regexDigits = /([\d]*[\d])/;
 //Formats any text copied, when pasted to plain text;
-var regexPaste = /<(?!(\/\s*)?(a|b|i|em|s|strong|u)[>,\s])([^>])*>/g;
+const regexPaste = /<(?!(\/\s*)?(a|b|i|em|s|strong|u)[>,\s])([^>])*>/g;
 
 //Stores text as an array using the regex var
 var stringRaw = [];
@@ -28,14 +30,18 @@ document.querySelector('#textarea1').addEventListener('paste', (e) =>{
 
     //Prevent the standard behavior
     e.preventDefault();
-})
+});
 
 //This will take all input from keyboard and store it as an array of words, even copied and pasted text
 textArea.addEventListener("keyup", (event) =>{
     var textStored = textArea.textContent;
 
     stringRaw = textStored.match(regex);
-
+    if(stringRaw !== null){
+        for(let i = 0; i < stringRaw.length; i++){
+            stringRaw[i] = stringRaw[i].replace(regexDigits, '($1)');
+        };
+    }
     
     switch(event.code){
         case 'Enter': 
@@ -61,7 +67,7 @@ function countWords(stringRaw, adding){
     
     if(stringRaw === null && !adding) return;
 
-    stringRaw.forEach(function(str) {
+    stringRaw.forEach((str) => {
 
         if(stringData[str] === undefined) {
             
@@ -69,7 +75,7 @@ function countWords(stringRaw, adding){
             stringData[str].pos = processWord(str);
 
         }else if(checkDictionary(str)) {
-            let rep = stringData[str].repeat++;
+            let rep = stringData[str].repeat + 1;
             stringData[str] = {size: 2, 
             str: str, repeat: rep,
             pos:{
@@ -128,9 +134,6 @@ function checkDictionary(str){
 
     for(let i = 0; i < dictionary.length; i++){
         if(dictionary[i] === str.toLowerCase()) {
-            result = true;
-            break;
-        }else if(!isNaN(str)) {
             result = true;
             break;
         }

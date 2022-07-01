@@ -38,7 +38,7 @@ class Dots{
 
     //Creates each ellipse object in screen based on the x and y values already calculated each frame
     createPoint(){
-        fill(this.setDotColor());
+        fill(this.setDotColor(random(200,255), false));
         noStroke();
         push();
         translate(xMove, yMove);
@@ -47,7 +47,7 @@ class Dots{
             let information = this.str + '| Repeated -- ' + this.repeat + ' times';
             fill(25);
             rect(this.x - 5/zoom, this.y - 8/zoom, floor(information.length*5.5)/zoom, 10/zoom, 2);
-            fill(255);
+            fill(this.setDotColor(255, true));
             textSize(10/zoom);
             text(information, this.x, this.y);
         }
@@ -69,7 +69,7 @@ class Dots{
         push();
         translate(xMove, yMove);
         noStroke();
-        fill(this.setDotColor(this.creationValue));
+        fill(this.setDotColor(this.creationValue, false));
         ellipse(this.x, this.y, this.creationValue);
         pop();
         this.creationValue /= this.creationAcc;
@@ -77,12 +77,14 @@ class Dots{
     }
 
     //Method that returns the color for the dot according repeat value and rgb taken from hex
-    setDotColor(alphaVal){
+    setDotColor(alphaVal, stdValue){
+        let colorExport;
         let colorArray = hexToRGB(colorPicker.value);
         let red = colorArray[0];
         let green = colorArray[1];
         let blue = colorArray[2];
-        let colorExport = color(red*this.repeat, green*this.repeat, blue*this.repeat, alphaVal);
+        if(stdValue) colorExport = color(red*5, green*5, blue*5, alphaVal);
+        else colorExport = color(red*this.repeat, green*this.repeat, blue*this.repeat, alphaVal);
 
         return colorExport;
     }

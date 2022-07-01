@@ -26,9 +26,9 @@ function draw(){
     let bgArray = hexToRGB(backgroundColor.value);
 
     background(bgArray[0], bgArray[1], bgArray[2]);
-    translate(mouseX, mouseY);
+    translate(mouseX*3, mouseY*3);
     scale(zoom);
-    translate(-mouseX, -mouseY);
+    translate(-mouseX*3, -mouseY*3);
     drawDots(dots);
 }
 
@@ -59,6 +59,5 @@ function hexToRGB(color){
 		line(-width, y, width, y);
 		text(y, 1, y+12);
 	}
-}
- */
+} */
 
