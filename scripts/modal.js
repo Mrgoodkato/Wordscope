@@ -8,6 +8,7 @@ const titleDrop = document.getElementById('title-drop');
 
 var toggleTxt = false;
 var toggleNav = false;
+var toggleGrid = true;
 
 //Modal for the text editor
 modalBtn.addEventListener('click', () =>{

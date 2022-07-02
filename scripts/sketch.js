@@ -7,6 +7,8 @@ var initX = 0, endX = 0, difX = 0, changeX = 0, xMove = 0;
 var initY = 0, endY = 0, difY = 0, changeY = 0, yMove = 0;
 var zoom = 1;
 
+var bgArray;
+
 function setup(){
     myCanvas = createCanvas(windowWidth, windowHeight);
     myCanvas.style('z-index', '-1');
@@ -23,13 +25,15 @@ function populate(check){
 //Draw dots each frame
 function draw(){
 
-    let bgArray = hexToRGB(backgroundColor.value);
+    bgArray = hexToRGB(backgroundColor.value);
 
     background(bgArray[0], bgArray[1], bgArray[2]);
     translate(mouseX*3, mouseY*3);
     scale(zoom);
     translate(-mouseX*3, -mouseY*3);
+    if(grid) drawGrid();
     drawDots(dots);
+    
 }
 
 function windowResized(){
@@ -48,16 +52,18 @@ function hexToRGB(color){
 }
 
 //Grid function just in case
-/* function drawGrid() {
-	stroke(25);
-	fill(120);
-	for (var x=-width; x < width; x+=40) {
-		line(x, -height, x, height);
-		text(x, x+1, 12);
+function drawGrid() {
+    push();
+    translate(xMove, yMove);
+	stroke(bgArray[0]*2, bgArray[1]*2, bgArray[2]*2);
+	fill(bgArray[0]*10, bgArray[1]*10, bgArray[2]*10);
+	for (var x=-windowWidth*3; x < windowWidth*3; x+=10) {
+		line(x, -windowHeight*3, x, windowHeight*3);
 	}
-	for (var y=-height; y < height; y+=40) {
-		line(-width, y, width, y);
-		text(y, 1, y+12);
+	for (var y=-windowHeight*3; y < windowHeight*3; y+=10) {
+		line(-windowWidth*3, y, windowWidth*3, y);
 	}
-} */
+    pop();
+    
+};
 

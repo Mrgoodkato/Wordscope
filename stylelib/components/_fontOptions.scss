@@ -25,4 +25,10 @@
 
 }
 
+@each $key, $var in $font-sizes {
+    .font-size-#{$key}{
+        font-size: $var;
+    };
+}
+
 

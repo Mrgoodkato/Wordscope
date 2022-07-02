@@ -27,6 +27,18 @@ html, body {
   margin: 0px;
 }
 
+.button-options-graphical {
+  width: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.button-options-graphical p {
+  padding: 0px;
+  margin: 0px;
+}
+
 .button-write {
   width: 10rem;
   height: 1rem;
@@ -4438,6 +4450,26 @@ html, body {
   font-family: "Archivo Black", sans-serif;
 }
 
+.font-size-xs {
+  font-size: 0.6rem;
+}
+
+.font-size-sm {
+  font-size: 0.75rem;
+}
+
+.font-size-md {
+  font-size: 1rem;
+}
+
+.font-size-lg {
+  font-size: 1.5rem;
+}
+
+.font-size-xl {
+  font-size: 2rem;
+}
+
 .nav-dropdown {
   width: 100vw;
   display: flex;
@@ -4534,11 +4566,18 @@ html, body {
   padding-left: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 @media (min-width: 0) {
+  .main-menu-corner {
+    flex-direction: column;
+    border-left: none;
+    border-top: 1px solid #DDDDDD;
+  }
+}
+@media (min-width: 480px) {
   .main-menu-corner {
     flex-direction: row;
     border-left: none;
@@ -4674,12 +4713,20 @@ html, body {
   bottom: 0;
   position: fixed;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-btns {
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
 }
-.footer div {
+.footer-btns .div {
   display: flex;
 }
 

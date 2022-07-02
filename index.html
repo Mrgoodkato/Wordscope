@@ -56,7 +56,7 @@
 
                 <!-- Color pickers -->
                 <label for="dot-color-picker">
-                        <a data-color="blue" id="show-textarea-btn" class="btn-outline-blue-light-3 button-color">
+                        <a data-color="blue" class="btn-outline-blue-light-3 button-color">
                                 <div><p>Primary color</p></div>
                                 <div><i class="fa-solid fa-palette"></i></div>
                                 </a>
@@ -64,12 +64,17 @@
                 </label>
 
                 <label for="background-color-picker">
-                        <a data-color="blue" id="show-textarea-btn" class="btn-outline-blue-light-3 button-color">
+                        <a data-color="blue" class="btn-outline-blue-light-3 button-color">
                                 <div><p>Secondary color</p></div>
                                 <div><i class="fa-solid fa-palette"></i></div>
                                 </a>
                         <input type="color" name="bckcolor" class="picker-btn" id="background-color-picker" value="#0B0514"/>
                 </label>
+
+                <a data-color="blue" id="show-grid" class="btn-blue-light-3 button-options-graphical">
+                        <div><p>Grid</p></div>
+                        <div><i class="fa-solid fa-border-none"></i></div>
+                </a>
                 
                 
         </div>
@@ -118,7 +123,7 @@
                                 </div>
                                 <!-- Text Color -->
                                 <label for="color-btn">
-                                        <a data-color="blue" id="show-textarea-btn" class="btn-blue-dark-2 button-color">
+                                        <a data-color="blue" class="btn-blue-dark-2 button-color">
                                                 <div><p>Text Color</p></div>
                                                 <div><i class="fa-solid fa-palette"></i></div>
                                                 </a>
@@ -134,14 +139,17 @@
 </div>
 
 <!-- Theme selector -->
-<footer class="footer">
-        <div><a data-="blue" href="#" class="btn-outline-blue-dark-3 button-display-foot-left"><i class="fa-solid fa-droplet"></i></a></dir>
-        <div><a data-="purple" href="#" class="btn-outline-purple-dark-3 button-display-foot-center"><i class="fa-solid fa-droplet"></i></a></dir>
-        <div><a data-="aquablue" href="#" class="btn-outline-aquablue-dark-3 button-display-foot-center"><i class="fa-solid fa-droplet"></i></a></dir>
-        <div><a data-="green" href="#" class="btn-outline-green-dark-3 button-display-foot-center"><i class="fa-solid fa-droplet"></i></a></dir>
-        <div><a data-="golden" href="#" class="btn-outline-golden-dark-3 button-display-foot-center"><i class="fa-solid fa-droplet"></i></a></dir>
-        <div><a data-="red" href="#" class="btn-outline-red-dark-3 button-display-foot-right"><i class="fa-solid fa-droplet"></i></a></dir>
-</footer>
+<div class="footer">
+        <div><h1 data-color="blue" class="text-blue-light-1 font-size-sm">Choose your theme</h1></div>
+        <div class="footer-btns">
+                <div><a data-="blue" href="#" class="btn-outline-blue-dark-3 button-display-foot-left"><i class="fa-solid fa-droplet"></i></a></div>
+                <div><a data-="purple" href="#" class="btn-outline-purple-dark-3 button-display-foot-center"><i class="fa-solid fa-droplet"></i></a></div>
+                <div><a data-="aquablue" href="#" class="btn-outline-aquablue-dark-3 button-display-foot-center"><i class="fa-solid fa-droplet"></i></a></div>
+                <div><a data-="green" href="#" class="btn-outline-green-dark-3 button-display-foot-center"><i class="fa-solid fa-droplet"></i></a></div>
+                <div><a data-="golden" href="#" class="btn-outline-golden-dark-3 button-display-foot-center"><i class="fa-solid fa-droplet"></i></a></div>
+                <div><a data-="red" href="#" class="btn-outline-red-dark-3 button-display-foot-right"><i class="fa-solid fa-droplet"></i></a></div>
+        </div>
+</div>
 
         <!-- JQuery script js -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -151,6 +159,7 @@
         <!-- My scripts -->
         <script src="scripts/color/colorChoose.js"></script>        
         <script src="scripts/modal.js"></script>
+        <script src="scripts/graphicOpts/graphOptions.js"></script>
         <script src="scripts/textBox.js"></script>
         <script src="scripts/dictionary/dictionary.js"></script>
         <script src="scripts/wordCounter.js"></script>

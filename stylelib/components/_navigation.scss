@@ -65,8 +65,13 @@
 .main-menu-corner{
     border-left: 1px solid $grey;
     padding-left: $base-padding*2;
-    @include flex-container(column, center, space-between);
+    @include flex-container(column, flex-start, space-between);
     @include xs{
+        flex-direction: column;
+        border-left: none;
+        border-top: 1px solid $grey;
+    }
+    @include sm{
         flex-direction: row;
         border-left: none;
         border-top: 1px solid $grey;

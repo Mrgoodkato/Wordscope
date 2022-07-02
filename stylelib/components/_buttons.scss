@@ -104,6 +104,19 @@
     }
 }
 
+.button-options-graphical{
+    width: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    p{
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
 .button-write{
     width: 10rem;
     height: 1rem;

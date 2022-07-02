@@ -2,8 +2,11 @@
     width: 100vw;
     bottom: 0;
     position: fixed;
+    @include flex-container(column, center, center);
+};
+.footer-btns{
     @include flex-container(row, center, center);
-    div{
+    .div{
         display: flex;
     }
-}
+};
