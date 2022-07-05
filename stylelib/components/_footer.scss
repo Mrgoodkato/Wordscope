@@ -1,8 +1,8 @@
 .footer{
     width: 100vw;
     bottom: 0;
-    position: fixed;
-    @include flex-container(column, center, center);
+    position: absolute;
+    @include flex-container(column, center, center, false);
 };
 .footer-btns{
     @include flex-container(row, center, center);
@@ -10,3 +10,16 @@
         display: flex;
     }
 };
+
+.buttons-foot-dropdown{
+    @include flex-container(row, center, space-between);
+    gap: 10px;
+};
+
+.footer-modal{
+    bottom: 0;
+    width: 100vw;
+    position: absolute;
+    @include flex-container(column, center, center);
+
+}

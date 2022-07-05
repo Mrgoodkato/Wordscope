@@ -7,7 +7,7 @@
         <title>Wordscope</title>
 
         <link rel="stylesheet" type="text/css" href="css/style.css">
-
+        
         <!-- P5 scripts loadup -->
         <script defer src="libraries/p5.min.js"></script>
         <script defer src="libraries/p5.sound.min.js"></script>
@@ -139,8 +139,18 @@
 </div>
 
 <!-- Theme selector -->
-<div class="footer">
-        <div><h1 data-color="blue" class="text-blue-light-1 font-size-sm">Choose your theme</h1></div>
+<div id="footer-menu-modal" class="footer-modal">
+        <div class="buttons-foot-dropdown">
+                <div><h1 data-color="blue" class="text-blue-light-1 font-size-sm">Choose your theme</h1></div>
+                <a data-color="blue" id="show-palettes" class="btn-blue-light-4 button-display-foot-right">
+                        <div><i class="fa-solid fa-swatchbook"></i></i></div></a>
+        </div>
+</div>
+
+
+<div id="footer-menu" class="footer">
+        <a data-color="blue" id="hide-palettes" class="btn-blue-light-4 button-display-minimize-sm">
+        <div><i class="fa-solid fa-minimize"></i></div></a>
         <div class="footer-btns">
                 <div><a data-="blue" href="#" class="btn-outline-blue-dark-3 button-display-foot-left"><i class="fa-solid fa-droplet"></i></a></div>
                 <div><a data-="purple" href="#" class="btn-outline-purple-dark-3 button-display-foot-center"><i class="fa-solid fa-droplet"></i></a></div>

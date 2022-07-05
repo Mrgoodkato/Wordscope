@@ -5,10 +5,15 @@ const overlay = document.getElementById('overlay');
 const navBar = document.getElementById('navbar');
 const navBarShow = document.getElementById('navbar-show');
 const titleDrop = document.getElementById('title-drop');
+const paletteCloseBtn = document.getElementById('hide-palettes');
+const paletteShowBtn = document.getElementById('show-palettes');
+const footShow = document.getElementById('footer-menu');
+const footModal = document.getElementById('footer-menu-modal');
 
 var toggleTxt = false;
 var toggleNav = false;
 var toggleGrid = true;
+var togglePalettes = false;
 
 //Modal for the text editor
 modalBtn.addEventListener('click', () =>{
@@ -54,6 +59,41 @@ navBarShow.addEventListener('click', ()=>{
     navBar.style.display = "none";
     titleDrop.style.display = "flex";
   }
+
+});
+
+//Modal for the palettes menu
+paletteCloseBtn.addEventListener('click', ()=>{
+  togglePalettes = togglePalettes ? false : true;
+  if(togglePalettes == true){
+    footShow.style.display = "none";
+    footModal.style.display = "flex";
+  }
+  else {
+    footShow.style.display = "flex";
+    footShow.style.animation = "moveFooter";
+    footShow.style.animationDuration = "1s";
+    footModal.style.display = "none";
+  }
+  togglePalettes = !togglePalettes ? true : false;
+  console.log(togglePalettes);
+});
+
+paletteShowBtn.addEventListener('click', ()=>{
+
+  togglePalettes = togglePalettes ? false : true;
+  if(togglePalettes == true){
+    footModal.style.display = "none";
+    footShow.style.display = "flex";
+    footShow.style.animation = "moveFooter";
+    footShow.style.animationDuration = "1s";
+  }
+  else {
+    footModal.style.display = "flex";
+    footShow.style.display = "none";
+  }
+  togglePalettes = !togglePalettes ? true : false;
+  console.log(togglePalettes);
 
 });
 

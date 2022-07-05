@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @mixin button-base($val, $outline: true){
     margin: $base-margin;
     padding: $base-padding $side-padding;
@@ -161,9 +163,9 @@
 
 }
 
-@mixin button-display-foot($side: "center") {
-    width: 0.5rem;
-    height: 0.25rem;
+@mixin button-display-foot($side: "center", $width: 0.5rem, $height: 0.25rem) {
+    width: $width;
+    height: $height;
     font-size: 0.5rem !important;
     display: flex;
     flex-direction: row;
@@ -193,4 +195,8 @@
 
 .button-display-foot-right{
     @include button-display-foot($side: "right");
+}
+
+.button-display-minimize-sm{
+    @include button-display-foot($side: "center", $width: 0.2rem, $height: 0.15rem);
 }

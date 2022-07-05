@@ -19,3 +19,16 @@
         opacity: 100%;
     }
 }
+
+@keyframes moveFooter{
+    from {
+        position: absolute;
+        bottom: -10px;
+        opacity: 0%;
+    }
+    to {
+        position: absolute;
+        bottom: 0px;
+        opacity: 100%;
+    }
+}

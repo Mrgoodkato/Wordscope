@@ -32,8 +32,7 @@ function draw(){
     scale(zoom);
     translate(-mouseX*3, -mouseY*3);
     if(grid) drawGrid();
-    drawDots(dots);
-    
+    drawDots(dots);    
 }
 
 function windowResized(){
@@ -55,7 +54,7 @@ function hexToRGB(color){
 function drawGrid() {
     push();
     translate(xMove, yMove);
-	stroke(bgArray[0]*2, bgArray[1]*2, bgArray[2]*2);
+	stroke(bgArray[0]*1.2, bgArray[1]*1.2, bgArray[2]*1.2);
 	fill(bgArray[0]*10, bgArray[1]*10, bgArray[2]*10);
 	for (var x=-windowWidth*3; x < windowWidth*3; x+=10) {
 		line(x, -windowHeight*3, x, windowHeight*3);

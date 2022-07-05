@@ -1,8 +1,6 @@
 @use 'sass:color';
 @use 'sass:math';
 
-@import 'components/buttons';
-
 @each $key, $val in $colors{
 
     @if $val == #FFFFFF or $val == $grey or $val == #000000 or $val == $dark{
