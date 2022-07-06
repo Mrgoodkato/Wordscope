@@ -52,11 +52,11 @@ function populateBySize(dots, data, size){
 function drawDots(dots){
     
     for(let str in dots){
-        dots[str].moveDot(); 
+        dots[str].moveDot();
         dots[str].dotBirth();
         dots[str].createPoint();
-        
     }
+    
 
 }
 

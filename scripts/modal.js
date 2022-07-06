@@ -26,6 +26,7 @@ modalBtn.addEventListener('click', () =>{
   }else {
     overlay.style.display = "none";
   }
+  toggleTxt = toggleTxt ? true : false;
   
 });
 
@@ -39,6 +40,7 @@ modalBtnSm.addEventListener('click', () =>{
   }else {
     overlay.style.display = "none";
   }
+  toggleTxt = toggleTxt ? true : false;
   
 });
 
@@ -59,6 +61,7 @@ navBarShow.addEventListener('click', ()=>{
     navBar.style.display = "none";
     titleDrop.style.display = "flex";
   }
+  toggleNav = toggleNav ? true : false;
 
 });
 
@@ -76,7 +79,6 @@ paletteCloseBtn.addEventListener('click', ()=>{
     footModal.style.display = "none";
   }
   togglePalettes = !togglePalettes ? true : false;
-  console.log(togglePalettes);
 });
 
 paletteShowBtn.addEventListener('click', ()=>{
@@ -96,6 +98,8 @@ paletteShowBtn.addEventListener('click', ()=>{
   console.log(togglePalettes);
 
 });
+
+
 
 // Make the DIV element draggable:
 dragElement(document.getElementById("modal"));
