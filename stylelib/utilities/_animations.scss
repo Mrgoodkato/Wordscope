@@ -1,4 +1,4 @@
-@keyframes moveMenu{
+@keyframes movenav{
     from {
         position: absolute;
         top: -200px;
@@ -20,7 +20,7 @@
     }
 }
 
-@keyframes moveFooter{
+@keyframes movefooter{
     from {
         position: absolute;
         bottom: -10px;

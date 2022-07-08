@@ -78,10 +78,7 @@ function countWords(stringRaw, adding){
             let rep = stringData[str].repeat + 1;
             stringData[str] = {size: 2, 
             str: str, repeat: rep,
-            pos:{
-                x: floor(random(0, windowWidth)),
-                y: floor(random(0, windowHeight))
-            }
+            pos: processWord(str)
         }
         }else {
             stringData[str].size += 1;

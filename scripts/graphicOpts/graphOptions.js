@@ -8,6 +8,5 @@ var grid = true;
 gridBtn.addEventListener('click', ()=>{
 
     grid = grid ? false : true;
-    console.log(grid);
 
 });

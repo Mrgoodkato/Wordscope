@@ -11,7 +11,7 @@ class Dots{
         this.showDisplay = false;
         this.creationValue = 255;
         this.creationAcc = random(1.1, 1.5);
-
+        
         //Used to set the offset of the noise function in moveDot(), random value to provide more rich movement
         this.xOffset = floor(random(0, 10000));
         this.yOffset = floor(random(0, 10000));

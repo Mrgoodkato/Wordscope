@@ -2,6 +2,7 @@
 var myCanvas;
 //Creates dots array var that will be used to create each Dots object from the class constructor
 var dots = [];
+var lines = [];
 var xPos, yPos;
 var initX = 0, endX = 0, difX = 0, changeX = 0, xMove = 0;
 var initY = 0, endY = 0, difY = 0, changeY = 0, yMove = 0;
@@ -54,8 +55,8 @@ function hexToRGB(color){
 function drawGrid() {
     push();
     translate(xMove, yMove);
-	stroke(bgArray[0]*1.2, bgArray[1]*1.2, bgArray[2]*1.2);
-	fill(bgArray[0]*10, bgArray[1]*10, bgArray[2]*10);
+    strokeWeight(1);
+	stroke(bgArray[0]*3, bgArray[1]*3, bgArray[2]*3);
 	for (var x=-windowWidth*3; x < windowWidth*3; x+=10) {
 		line(x, -windowHeight*3, x, windowHeight*3);
 	}

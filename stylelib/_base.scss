@@ -9,7 +9,7 @@ html, body{
 
 
 //Modal display default
-#overlay{
+[data-modal="txt-menu"]{
     display: none;
 }
 

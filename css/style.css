@@ -11,7 +11,7 @@ html, body {
   overflow: hidden;
 }
 
-#overlay {
+[data-modal=txt-menu] {
   display: none;
 }
 
@@ -4762,7 +4762,7 @@ html, body {
   flex-wrap: wrap;
 }
 
-@keyframes moveMenu {
+@keyframes movenav {
   from {
     position: absolute;
     top: -200px;
@@ -4782,7 +4782,7 @@ html, body {
     opacity: 100%;
   }
 }
-@keyframes moveFooter {
+@keyframes movefooter {
   from {
     position: absolute;
     bottom: -10px;

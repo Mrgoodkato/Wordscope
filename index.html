@@ -21,23 +21,23 @@
 <!-- Dropdown minimenu -->
 <nav class="nav-dropdown">
         <div class="title-dropdown">
-        <h1 id="title-drop" class="text-grey mini-title">Wordscope</h1>
+        <h1 data-modal="nav-sm" data-state="open" class="text-grey mini-title">Wordscope</h1>
         <div class="buttons-nav-dropdown">
-        <a href="#" id="show-textarea-btn-drop" class="btn-orange-light-3 button-display-nav-right">
+        <a href="#" data-modalBtn="txt-btn" class="btn-orange-light-3 button-display-nav-right">
                 <div><i class="fa-solid fa-i-cursor"></i></div></a>
-        <a data-color="blue" href="#" id="navbar-show" class="btn-blue-dark-4 button-display-nav-left">
+        <a data-color="blue" href="#" data-modalBtn="nav-btn" class="btn-blue-dark-4 button-display-nav-left">
                 <div><i class="fa-solid fa-caret-down"></i></div></a>
         </div>
         </div>
 </nav>
 
-<nav data-color="blue" id="navbar" class="navigation bg-blue-dark-1">
+<nav data-color="blue" data-modal="nav-menu" data-state="closed" class="navigation bg-blue-dark-1">
         <div class="main-menu-wrapper">
                 <h1 class="text-grey title-3">Wordscope</h1>
                 <div class="main-menu">
                         
                         <!-- Writting button -->
-                        <a href="#" id="show-textarea-btn" class="btn-orange-light-3 button-write">
+                        <a href="#" data-modalBtn="txt-btn" class="btn-orange-light-3 button-write">
                         <div><p>Start Writing</p></div>
                         <div><i class="fa-solid fa-i-cursor"></i></div>
                         </a>
@@ -79,13 +79,13 @@
                 
         </div>
 </nav>
-<div id="overlay" class="overlay-style">
+<div data-modal="txt-menu" data-state="closed" class="overlay-style">
         <!-- TEXT AREA WHERE WE GRAB ALL TEXT AND DO THE MAGIC -->
         <div data-color="blue" id="modal" class="modal-style bg-blue-dark-4">
                 <div id="modalheader" class="modal-header-style">
                         <div class="header-items">
                                 <!-- Close button -->
-                                <a data-color="blue" href="#" id="close-textarea-btn" class="btn-blue-light-4">Hide</a>
+                                <a data-color="blue" href="#" data-modalBtn="txt-btn" class="btn-blue-light-4">Hide</a>
                         </div>
                         <div class="header-items">
                                 <!-- Close button -->
@@ -139,17 +139,17 @@
 </div>
 
 <!-- Theme selector -->
-<div id="footer-menu-modal" class="footer-modal">
+<div data-modal="footer-sm" data-state="open" class="footer-modal">
         <div class="buttons-foot-dropdown">
                 <div><h1 data-color="blue" class="text-blue-light-1 font-size-sm">Choose your theme</h1></div>
-                <a data-color="blue" id="show-palettes" class="btn-blue-light-4 button-display-foot-right">
+                <a data-color="blue" data-modalBtn="footer-btn" class="btn-blue-light-4 button-display-foot-right">
                         <div><i class="fa-solid fa-swatchbook"></i></i></div></a>
         </div>
 </div>
 
 
-<div id="footer-menu" class="footer">
-        <a data-color="blue" id="hide-palettes" class="btn-blue-light-4 button-display-minimize-sm">
+<div data-modal="footer-menu" data-state="closed" class="footer">
+        <a data-color="blue" data-modalBtn="footer-btn" class="btn-blue-light-4 button-display-minimize-sm">
         <div><i class="fa-solid fa-minimize"></i></div></a>
         <div class="footer-btns">
                 <div><a data-="blue" href="#" class="btn-outline-blue-dark-3 button-display-foot-left"><i class="fa-solid fa-droplet"></i></a></div>
@@ -168,14 +168,14 @@
 
         <!-- My scripts -->
         <script src="scripts/color/colorChoose.js"></script>        
-        <script src="scripts/modal.js"></script>
+        <script src="scripts/modal/modal.js"></script>
+        <script src="scripts/modal/modalOptions.js"></script>
         <script src="scripts/graphicOpts/graphOptions.js"></script>
         <script src="scripts/textBox.js"></script>
         <script src="scripts/dictionary/dictionary.js"></script>
         <script src="scripts/wordCounter.js"></script>
         <script src="scripts/sketch.js"></script>
         <script src="scripts/classes/input.js"></script>
-        <script src="scripts/classes/lines.js"></script>
         <script src="scripts/classes/dots.js"></script>
         <script src="scripts/classes/populatingFun.js"></script>
   </body>
