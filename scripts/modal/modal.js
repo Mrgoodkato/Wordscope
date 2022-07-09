@@ -1,7 +1,6 @@
 //Modal data-modalBtn tag buttons
 const modalBtns = document.querySelectorAll("[data-modalBtn]");
 
-//Modal for the palettes menu
 modalBtns.forEach(btn => {
 
   btn.addEventListener('click', ()=>{

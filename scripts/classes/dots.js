@@ -38,7 +38,7 @@ class Dots{
 
     //Creates each ellipse object in screen based on the x and y values already calculated each frame
     createPoint(){
-        fill(this.setDotColor(random(200,255), false));
+        fill(this.setDotColor(255, false));
         noStroke();
         push();
         translate(xMove, yMove);
@@ -57,7 +57,7 @@ class Dots{
     //Method for displaying the information on each dot object when mouse is over it
     display(xM, yM){
         let distance = dist(xM-xMove, yM-yMove, (this.x), (this.y));
-        if(distance <= this.size){
+        if(distance <= this.size+5){
             this.showDisplay = this.showDisplay ? false : true;
             console.log(this.str);
         }
