@@ -13,7 +13,7 @@ const themeElements = document.querySelectorAll("[data-color]");
 const colorsMap = [
   blue = {
     name: 'blue',
-    primary: '#121249',
+    primary: '#32328F',
     secondary: '#0B0514',
   },
   purple = {

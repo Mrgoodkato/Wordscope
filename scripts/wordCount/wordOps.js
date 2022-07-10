@@ -30,32 +30,24 @@ function addWord(str, newWord){
 //This calculates the coordinate values of each string based on internal algorithm, takes from wordMaths
 function processWord(word){
 
-    let xP = 0;
-    let yP = 0;
+    let coordinate = {x: 0, y: 0};    
+
+    word.length !== 1 ? coordinate = wordMath(word, false) : coordinate = wordMath(word, true); 
+
+    coordinate.x = Math.abs(coordinate.x);
+    coordinate.y = Math.abs(coordinate.y);
+
+    limitAdapt(coordinate);
     
-    if(word.length === 1){
-        xP = word.charCodeAt(0);
-        yP = word.charCodeAt(0);
-        if(limitX < xP) limitX = xP;
-        if(limitY < yP) limitY = yP;
-        console.log(word + ': ', xP, yP);        
-        return {x: xP, y: yP};
-    }
-
-    for(let i = 0; i < word.length; i++){
-        xP += wordSignChange(word.charCodeAt(i), i);
-        if(i >= floor(word.length/2)) yP += wordSignChange(word.charCodeAt(i), i);
-    }
-
-    xP = Math.abs(xP);
-    yP = Math.abs(yP);
-
-    if(limitX < xP) limitX = xP;
-    if(limitY < yP) limitY = yP;
-
-    console.log(word + ': ', xP, yP);
+    return coordinate;
     
-    return {x: xP, y: yP};
-    
+};
+
+//Adapts the limitX, limitY variables according to the coordinates values over time
+function limitAdapt(coordinate){
+
+    if(limitX < coordinate.x) limitX = coordinate.x;
+    if(limitY < coordinate.y) limitY = coordinate.y;
+
 };
 
