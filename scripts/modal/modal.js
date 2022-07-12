@@ -1,3 +1,5 @@
+import {modalAction} from "./modalOptions.js";
+
 //Modal data-modalBtn tag buttons
 const modalBtns = document.querySelectorAll("[data-modalBtn]");
 

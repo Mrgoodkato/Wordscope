@@ -1,5 +1,5 @@
 //Big ass function switching between changes done in different DOM elements
-function modalAction(btn){
+export function modalAction(btn){
     
     const btnName = btn.getAttribute('data-modalBtn');
 

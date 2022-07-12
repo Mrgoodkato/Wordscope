@@ -80,9 +80,45 @@ saveTxt.addEventListener('click', ()=>{
 //Function to save text in PDF
 savePdf.addEventListener('click', ()=>{
 
-    const doc = new jsPDF();
+    const doc = new jsPDF({
+        orientation: 'p',
+        unit: 'mm',
+        format: 'letter'
+    });
 
-    doc.text(textArea.innerText, 10, 10);
+    const options = {
+        align: 'justify'
+    };
+
+    const splitTxt = doc.splitTextToSize(textArea.innerText, 250);
+
+    let y = 20;
+    let p = 0;
+
+    for(let i = 0; i < splitTxt.length; i++){
+        
+        if(y > doc.getPageHeight() - 40){
+            doc.setFontSize(8);
+            p++;
+            let page = "Page: " + p;
+            doc.text(page, doc.getPageWidth() - 30, doc.getPageHeight() - 10)
+            y = 15;
+            doc.addPage();
+            p++;
+            page = "Page: " + p;
+            doc.text(page, doc.getPageWidth() - 30, doc.getPageHeight() - 10)
+        }
+        doc.setFontSize(12);
+        doc.text(splitTxt[i], 10, y, options);
+        y += 5;
+    }
+
+
+
+    
+    console.log(doc.getLineWidth());
+
+
     doc.save(fileName.value + ".pdf");
 });
 
