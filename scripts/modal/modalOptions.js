@@ -1,5 +1,5 @@
 //Big ass function switching between changes done in different DOM elements
-export function modalAction(btn){
+export default function modalAction(btn){
     
     const btnName = btn.getAttribute('data-modalBtn');
 
@@ -50,7 +50,7 @@ function animationStyle(name){
 
 };
 
-//Stand alone function for the textbox display and hidden states
+//Helper function for the textbox display and hidden states
 function txtBoxAction(txtMenu){
 
     let stateMenu = txtMenu.getAttribute('data-state');

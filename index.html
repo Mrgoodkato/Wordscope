@@ -44,12 +44,12 @@
                         
                         <!-- Save menu -->
                         <div class="button-save">
-                                <a id="save-txt" data-color="blue" class="btn-blue-dark-4"><i class="fa-solid fa-file-lines save-icon" href="#"></i></a>
-                                <a id="save-pdf" data-color="blue" class="btn-blue-dark-4"><i class="fa-solid fa-file-pdf save-icon" href="#"></i></a>
-                                <a id="save-word" data-color="blue" class="btn-blue-dark-4"><i class="fa-solid fa-file-word save-icon" href="#"></i></a>
+                                <a data-txt="save-txt" data-color="blue" class="btn-blue-dark-4"><i class="fa-solid fa-file-lines save-icon" href="#"></i></a>
+                                <a data-txt="save-pdf" data-color="blue" class="btn-blue-dark-4"><i class="fa-solid fa-file-pdf save-icon" href="#"></i></a>
+                                <a data-txt="save-word" data-color="blue" class="btn-blue-dark-4"><i class="fa-solid fa-file-word save-icon" href="#"></i></a>
                         </div>
                 </div>
-                <input id="file" data-color="blue" class="file-name input-blue-light-4" type="text" placeholder="Your writing name here"/>
+                <input data-txt-filename="file-name" data-color="blue" class="file-name input-blue-light-4" type="text" placeholder="Your writing name here"/>
         </div>
 
         <div class="main-menu-corner">
@@ -97,29 +97,29 @@
                 <div class="op-btn-cont">
                         <div class="text-options">
                                 <!-- Base text options -->
-                                <a id="bold-btn" data-color="blue" class="btn-blue-dark-4" style="font-weight: bolder;" href="#">B</a>
-                                <a id="italic-btn" data-color="blue" class="btn-blue-dark-4" style="font-style: italic; font-weight: lighter;" href="#">I</a>
-                                <a id="underline-btn" data-color="blue" class="btn-blue-dark-4" style="text-decoration: underline; font-weight: lighter;" href="#">U</a>
+                                <a data-txt="text-bold" data-color="blue" class="btn-blue-dark-4" style="font-weight: bolder;" href="#">B</a>
+                                <a data-txt="text-italic" data-color="blue" class="btn-blue-dark-4" style="font-style: italic; font-weight: lighter;" href="#">I</a>
+                                <a data-txt="text-underline" data-color="blue" class="btn-blue-dark-4" style="text-decoration: underline; font-weight: lighter;" href="#">U</a>
                         </div>
                         <div class="text-options-drop">
                                 <!-- Toggle sizes -->
                                 <div class="dropdown">
                                         <a data-color="blue" class="btn-blue-dark-3">Font Size</a>
                                         <div class="dropdown-menu">
-                                                <a class="btn-grey btn-size" name="10px" href="#">Small</a>
-                                                <a class="btn-grey btn-size" name="14px" href="#">Medium</a>
-                                                <a class="btn-grey btn-size" name="16px" href="#">Large</a>
-                                                <a class="btn-grey btn-size" name="22px" href="#">X Large</a>
+                                                <a data-txt="text-size" class="btn-grey" name="10px" href="#">Small</a>
+                                                <a data-txt="text-size" class="btn-grey" name="14px" href="#">Medium</a>
+                                                <a data-txt="text-size" class="btn-grey" name="16px" href="#">Large</a>
+                                                <a data-txt="text-size" class="btn-grey" name="22px" href="#">X Large</a>
                                         </div>
                                 </div>
                                 <!-- Toggle align -->
                                 <div class="dropdown">
                                         <a data-color="blue" class="btn-blue-dark-3">Align Text</a>
                                         <div class="dropdown-menu">
-                                                <a class="btn-grey btn-align" name="left" href="#">Left</a>
-                                                <a class="btn-grey btn-align" name="center" href="#">Center</a>
-                                                <a class="btn-grey btn-align" name="right" href="#">Right</a>
-                                                <a class="btn-grey btn-align" name="justify" href="#">Justify</a>
+                                                <a data-txt="text-align" class="btn-grey" name="left" href="#">Left</a>
+                                                <a data-txt="text-align" class="btn-grey" name="center" href="#">Center</a>
+                                                <a data-txt="text-align" class="btn-grey" name="right" href="#">Right</a>
+                                                <a data-txt="text-align" class="btn-grey" name="justify" href="#">Justify</a>
                                         </div>
                                 </div>
                                 <!-- Text Color -->
@@ -128,13 +128,13 @@
                                                 <div><p>Text Color</p></div>
                                                 <div><i class="fa-solid fa-palette"></i></div>
                                                 </a>
-                                        <input id="color-btn" class="picker-btn" type="color" name="txtcolor" value="#81b4b6"/>
+                                        <input data-txt-color="text-color" id="color-btn" class="picker-btn" type="color" name="txtcolor" value="#81b4b6"/>
                                 </label>
                                 
                         </div>
                 </div>
                 <div class="text-area">
-                        <div id="textarea1" class="textbox" contenteditable="true"></div>
+                        <div data-txt-area="text-area" class="textbox" contenteditable="true"></div>
                 </div>
         </div>
 </div>
@@ -168,10 +168,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
         <!-- My scripts -->
-        <script src="scripts/color/colorChoose.js"></script>        
-        <script type="module" src="scripts/modal/modal.js"></script>
+        <script src="scripts/color/colorChoose.js"></script>
+        <script type="module" src="scripts/main.js"></script>        
         <script src="scripts/graphicOpts/graphOptions.js"></script>
-        <script src="scripts/textBox.js"></script>
         <script src="scripts/dictionary/dictionary.js"></script>
         <script src="scripts/wordCount/wordCounter.js"></script>
         <script src="scripts/wordCount/wordOps.js"></script>

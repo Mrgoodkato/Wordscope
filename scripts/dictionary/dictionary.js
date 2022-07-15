@@ -7,5 +7,7 @@ var dictionary = [
     "he", "she", "it", "you", "they", "we", "their", "mine", "our", "ours", "i",
     "ha", "he", "habemos", "hemos", "han",
     "have", "had", "has", "hadn't", "hasn't", "haven't", "was", "is", "were", "weren't", "wasn't", "isn't",
-    "to", "not", "his", "her", "their", "theirs", "hers", "its", "it's"
+    "to", "not", "his", "her", "their", "theirs", "hers", "its", "it's",
+    "my", "by", "me", "as", "but", "for", "with", "from", "which", "one", "s", "t", "be", "all",
+    "when", "been"
 ]
