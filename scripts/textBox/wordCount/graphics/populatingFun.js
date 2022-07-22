@@ -50,8 +50,6 @@ function populateBySize(dots, data, size){
 
 //Draws each dot, first setting up positions and then creating each ellipse and creating lines connecting said dots
 function drawDots(dots){
-    
-
 
     for(let str in dots){
         dots[str].moveDot();

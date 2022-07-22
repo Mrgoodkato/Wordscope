@@ -4,11 +4,11 @@
   },
   "include": [
     "*.js",
-    "classes/*.js",
+    "graphics/*.js",
     "libraries/*.js",
     "graphicOpts/*.js",
     "dictionary/*.js",
     "color/*.js",
     "c:\\Users\\USUARIO\\.vscode\\extensions\\samplavigne.p5-vscode-1.2.8\\p5types\\global.d.ts", 
-    "modal/*.js", "wordCount/*.js", "textBox/*.js"]
+    "modal/*.js", "textBox/*.js", "textBox/wordCount/dictionary/dictionary.js", "textBox/wordCount/graphics/sketch.js"]
 }

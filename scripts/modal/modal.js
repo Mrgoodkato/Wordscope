@@ -3,15 +3,16 @@ import modalAction from "./modalOptions.js";
 
 export default class Modal{
 
-  constructor(){
+  constructor(textArea){
     this.modalBtns = document.querySelectorAll("[data-modalBtn]");
+    this.textArea = textArea;
   };
 
   createModalBtns() {
     this.modalBtns.forEach(btn => {
 
       btn.addEventListener('click', ()=>{
-        modalAction(btn);
+        modalAction(btn, this.textArea);
       });
     
     });

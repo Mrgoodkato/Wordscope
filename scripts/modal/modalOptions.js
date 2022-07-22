@@ -1,5 +1,5 @@
 //Big ass function switching between changes done in different DOM elements
-export default function modalAction(btn){
+export default function modalAction(btn, textArea){
     
     const btnName = btn.getAttribute('data-modalBtn');
 
@@ -18,7 +18,7 @@ export default function modalAction(btn){
         
         case 'txt-btn':
             const txtMenu = document.querySelector('[data-modal=txt-menu]');
-            txtBoxAction(txtMenu);
+            txtBoxAction(txtMenu, textArea);
             break;
     }
 };
@@ -51,7 +51,7 @@ function animationStyle(name){
 };
 
 //Helper function for the textbox display and hidden states
-function txtBoxAction(txtMenu){
+function txtBoxAction(txtMenu, textArea){
 
     let stateMenu = txtMenu.getAttribute('data-state');
 
@@ -59,7 +59,7 @@ function txtBoxAction(txtMenu){
         txtMenu.style.display = "block";
         txtMenu.style.animation = "displayEditor";
         txtMenu.style.animationDuration = "1s";
-        document.getElementById('textarea1').focus();
+        textArea.focus();
         txtMenu.dataset.state = 'open';
     }else{
         txtMenu.style.display = "none";

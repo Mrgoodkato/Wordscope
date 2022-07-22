@@ -96,10 +96,10 @@
                 </div>
                 <div class="op-btn-cont">
                         <div class="text-options">
-                                <!-- Base text options -->
-                                <a data-txt="text-bold" data-color="blue" class="btn-blue-dark-4" style="font-weight: bolder;" href="#">B</a>
-                                <a data-txt="text-italic" data-color="blue" class="btn-blue-dark-4" style="font-style: italic; font-weight: lighter;" href="#">I</a>
-                                <a data-txt="text-underline" data-color="blue" class="btn-blue-dark-4" style="text-decoration: underline; font-weight: lighter;" href="#">U</a>
+                                <!-- Format text options -->
+                                <a data-txt="text-format" data-format="bold" data-color="blue" class="btn-blue-dark-4" style="font-weight: bolder;" href="#">B</a>
+                                <a data-txt="text-format" data-format="italic" data-color="blue" class="btn-blue-dark-4" style="font-style: italic; font-weight: lighter;" href="#">I</a>
+                                <a data-txt="text-format" data-format="underline" data-color="blue" class="btn-blue-dark-4" style="text-decoration: underline; font-weight: lighter;" href="#">U</a>
                         </div>
                         <div class="text-options-drop">
                                 <!-- Toggle sizes -->
@@ -134,7 +134,9 @@
                         </div>
                 </div>
                 <div class="text-area">
-                        <div data-txt-area="text-area" class="textbox" contenteditable="true"></div>
+                        <div data-txt-area="text-area" 
+                        class="textbox" 
+                        contenteditable="true"><p data-txt-name="name-textbox"></p><p>//</p></div>
                 </div>
         </div>
 </div>
@@ -170,15 +172,5 @@
         <!-- My scripts -->
         <script src="scripts/color/colorChoose.js"></script>
         <script type="module" src="scripts/main.js"></script>        
-        <script src="scripts/graphicOpts/graphOptions.js"></script>
-        <script src="scripts/dictionary/dictionary.js"></script>
-        <script src="scripts/wordCount/wordCounter.js"></script>
-        <script src="scripts/wordCount/wordOps.js"></script>
-        <script src="scripts/wordCount/wordMaths.js"></script>
-        <script src="scripts/wordCount/dictionaryFun.js"></script>
-        <script src="scripts/sketch.js"></script>
-        <script src="scripts/classes/input.js"></script>
-        <script src="scripts/classes/dots.js"></script>
-        <script src="scripts/classes/populatingFun.js"></script>
   </body>
 </html>

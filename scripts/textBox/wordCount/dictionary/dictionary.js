@@ -1,4 +1,4 @@
-var dictionary = [
+export const dictionary = [
     "el", "él", "la", "los", "las", "les", "y", "ó", "o", "a", "en", "si", "al", "con", "sin", "de", "que", "un", "del",
     "una", "lo", "para", "por", "le", "su", "se", "es", "era", "pero", "como", "fue", "son", "hay",
     "the", "of", "on", "an", "a", "and", "or", "if", "this", "that", "those", "in", "on",

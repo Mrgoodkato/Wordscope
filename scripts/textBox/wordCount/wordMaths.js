@@ -1,19 +1,19 @@
 //Performs main computing on word according to type of word
-function wordMath(word, isOneChar){
-    coordinate = isOneChar ? {
-        x: word.charCodeAt(0),
-        y: word.charCodeAt(0)
-    } : addChars(word);
+export default function wordMath(str, isOneChar){
+    let coordinate = isOneChar ? {
+        x: str.charCodeAt(0),
+        y: str.charCodeAt(0)
+    } : addChars(str);
 
     return coordinate;
 
 };
 
 //Function to cicle in the word and add the characters togheter
-function addChars(word){
+function addChars(str){
     let coordinate = {x: 0, y: 0};
-    for(let i = 0; i < word.length; i++){
-        i < floor(word.length/2) ? coordinate.x += wordSignChange(word.charCodeAt(i), i) : coordinate.y += wordSignChange(word.charCodeAt(i), i);
+    for(let i = 0; i < str.length; i++){
+        i < Math.floor(str.length/2) ? coordinate.x += wordSignChange(str.charCodeAt(i), i) : coordinate.y += wordSignChange(str.charCodeAt(i), i);
     }
     return coordinate;
 };

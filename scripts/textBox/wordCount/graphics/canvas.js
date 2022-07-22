@@ -1,3 +1,38 @@
+export default class Canvas{
+
+    constructor(data){
+        this.myCanvas = new p5(this.sketch);
+        this.dots = [];
+        this.lines = [];
+        this.bgColor;
+    };
+
+    sketch(p){
+        
+        p.setup = () =>{
+            
+            let canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+            canvas.style('z-index', '1');
+                  
+        };
+
+        p.windowResized = () =>{
+
+            p.resizeCanvas(p.windowWidth, p.windowHeight);
+
+        };
+
+        p.draw = () =>{
+
+            p.background(255);
+
+        };
+        
+    };
+
+}
+
+
 //Sets up canvas as a variable that can be attached to an HTML element in setup()
 var myCanvas;
 //Creates dots array var that will be used to create each Dots object from the class constructor
@@ -36,10 +71,6 @@ function draw(){
     drawDots(dots);    
 }
 
-function windowResized(){
-    resizeCanvas(windowWidth, windowHeight);
-}
-
 function hexToRGB(color){
 
     let rgbValues = color.match(/(?:[^#].{1})/g);
@@ -49,7 +80,7 @@ function hexToRGB(color){
         parseInt(rgbValues[2], 16)
     ];
     return rgbArray;
-}
+};
 
 //Grid function just in case
 function drawGrid() {

@@ -1,5 +1,7 @@
+import {dictionary} from "./dictionary.js";
+
 //Method to check the dictionary script for common words used
-function checkDictionary(str){
+export function checkDictionary(str){
     let result = false;
     for(let i = 0; i < dictionary.length; i++){ 
 
@@ -9,10 +11,4 @@ function checkDictionary(str){
         }
     }
     return result;
-};
-
-//Function to compute str object if checkDictionary is true
-function dictionaryOps(str){
-    let rep = stringData[str].repeat + 1;
-    stringData[str] = {size: 2, str: str, repeat: rep, pos: processWord(str)}
 };

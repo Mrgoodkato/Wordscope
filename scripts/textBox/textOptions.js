@@ -9,17 +9,8 @@ export function txtBtnSelector(btn, textArea, filename){
     const btnName = btn.getAttribute('data-txt');
 
     switch(btnName){
-        case 'text-bold':
-            textArea.focus();
-            document.execCommand('bold');
-            break;
-        case 'text-italic':
-            textArea.focus();
-            document.execCommand('italic');
-            break;
-        case 'text-underline':
-            textArea.focus();
-            document.execCommand('underline');
+        case 'text-format':
+            formatBtns(btn, textArea);
             break;
         case 'text-size':
             dropBtns(btn, 'size');
@@ -40,22 +31,51 @@ export function txtBtnSelector(btn, textArea, filename){
 
 };
 
+//Function to set bold-italic-underline to text
+function formatBtns(btn, textArea){
+
+    if(!checkSelection()) return;
+
+    let btnFormat = btn.getAttribute('data-format');
+    let selection = window.getSelection().getRangeAt(0);
+    console.log("Selection: " + selection + ' ' + selection.startOffset + ' ' + selection.endOffset);
+    console.log(selection);
+
+    textArea.focus();
+    switch (btnFormat){
+        case 'bold':
+
+            break;
+        case 'italic':
+
+            break;
+        case 'underline':
+
+            break;
+    }
+
+};
+
 //Function to align-set size of btns
 function dropBtns(btn, type){
 
-    if(window.getSelection().anchorNode === null) return;
+    let selection;
 
-    let sel = window.getSelection().getRangeAt(0).commonAncestorContainer.parentElement;
+    console.log(checkSelection());
+
+    if(!checkSelection()) return;
+
+    selection = window.getSelection().getRangeAt(0).commonAncestorContainer.parentElement;
     
-    if(sel.getAttribute('data-txt-area') === null) return;
 
     switch(type){
         case 'align': {
-            sel.style.textAlign = btn.name;
+            console.log(selection.style.textAlign);
+            selection.style.textAlign = btn.name;
             break;
         }
         case 'size': {
-            sel.style.fontSize = btn.name;
+            selection.style.fontSize = btn.name;
             break;
         }
     };
@@ -147,4 +167,18 @@ function export2PDF(textArea, fileName){
     }
 
     doc.save(fileName + ".pdf");
+};
+
+function checkSelection(){
+
+    let result;
+
+    if(window.getSelection().anchorNode === null) return false;
+    
+    let isTextArea = window.getSelection().focusNode.parentElement.parentNode;
+    
+    if(isTextArea.getAttribute('class') === 'text-area' || isTextArea.getAttribute('class') === 'textbox') result = true;
+    else result = false;
+
+    return result;
 };
