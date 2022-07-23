@@ -19,23 +19,25 @@ export default class KeyEvents{
 
     };
 
+    //Handles the functions called when pressing ENTER, SPACE and BACKSPACE that link to the P5 canvas and creates the graphics
     keyInput(event){
         switch(event.code){
             case 'Enter':
             case 'Space': {
                 if(this.stringRaw === null) return;
                 this.stringData = new StringData(this.stringRaw, true);
-                new Canvas(this.stringData.data);
+                new Canvas(this.stringData.data, true);
                 break;
             };
             case 'Backspace': {
                 new StringData(this.stringRaw, false);
-                /* populate(false); */
+                new Canvas(this.stringData.data, false);
                 break;
             };       
         };
     };
 
+    //Creates the array of words from the textContent of the textBox
     stringRawCreate(textContent){
         let initStringRaw = textContent.match(this.regex);
         if(initStringRaw !== null){
@@ -43,7 +45,6 @@ export default class KeyEvents{
                 initStringRaw[i] = initStringRaw[i].replace(this.regexDigits, '($1)');
             };
         };
-        console.log(initStringRaw);
         return initStringRaw;
     };
 

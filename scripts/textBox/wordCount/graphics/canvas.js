@@ -1,62 +1,61 @@
+import Populator from "./populatingFun.js";
+
+//Creating a new class for the P5 Canvas, instantiable
 export default class Canvas{
 
-    constructor(data){
-        this.myCanvas = new p5(this.sketch);
-        this.dots = [];
-        this.lines = [];
-        this.bgColor;
-    };
-
-    sketch(p){
+    constructor(data, check){
+        this.data = data;
+        this.check = check;
+        this.populator;
         
-        p.setup = () =>{
+        //p is the event for the P5 class that represents something like g in graphics class in JAVA
+        this.sketch = (p) =>{
+        
+            p.setup = () =>{
+                
+                let canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+                canvas.style('z-index', '1');
+                      
+            };
+    
+            p.windowResized = () =>{
+    
+                p.resizeCanvas(p.windowWidth, p.windowHeight);
+    
+            };
+    
+            p.draw = () =>{
+    
+                this.populator = new Populator(this.data, this.check);
+                this.drawDots(this.populator.dots, p);
+                
+
+            };
             
-            let canvas = p.createCanvas(p.windowWidth, p.windowHeight);
-            canvas.style('z-index', '1');
-                  
         };
 
-        p.windowResized = () =>{
-
-            p.resizeCanvas(p.windowWidth, p.windowHeight);
-
-        };
-
-        p.draw = () =>{
-
-            p.background(255);
-
-        };
-        
+        this.myCanvas = new p5(this.sketch);
     };
+
+    drawDots(dots, p){
+        for(let str in dots){
+            dots[str].moveDot(p);
+            dots[str].dotBirth(p);
+            dots[str].createPoint(p);
+        }
+    };
+
+    
 
 }
 
-
-//Sets up canvas as a variable that can be attached to an HTML element in setup()
-var myCanvas;
-//Creates dots array var that will be used to create each Dots object from the class constructor
-var dots = [];
-var lines = [];
-var xPos, yPos;
+/* var xPos, yPos;
 var initX = 0, endX = 0, difX = 0, changeX = 0, xMove = 0;
 var initY = 0, endY = 0, difY = 0, changeY = 0, yMove = 0;
 var zoom = 1;
 
 var bgArray;
 
-function setup(){
-    myCanvas = createCanvas(windowWidth, windowHeight);
-    myCanvas.style('z-index', '-1');
-}
-
-//Called each time the "space" key is pressed to populate with new dots according to the
-//textarea content at the time
-function populate(check){
-    
-    check ? populateDots(dots, stringData) : refreshDots(dots, stringData);
-
-}
 
 //Draw dots each frame
 function draw(){
@@ -98,3 +97,4 @@ function drawGrid() {
     
 };
 
+ */

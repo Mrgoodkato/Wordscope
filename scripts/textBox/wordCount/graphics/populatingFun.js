@@ -1,54 +1,87 @@
-/*
-This function populates the dots array with new Dots objects from the Dots class - providing position x and y
-as well as size information gathered from the stringData from wordCounter.
-*/
-function populateDots(dots, data){
+import Dots from "./classes/dots.js";
 
-    if(data === undefined) return;
+export default class Populator{
 
-    var sizes = getSizes(data);
+    constructor(data, check){
+        this.dots = [];
+        this.data = data;
+        this.check = check;
+        this.check ? this.populateDots() : this.refreshDots();
+    };
 
-    for(let i = 0; i < sizes.length; i++) populateBySize(dots, data, sizes[i]);
+    populateDots(){
 
+        if(this.data === undefined) return;
     
-}
-
-//Get all sizes on the stringData array, returns the array of unique sizes - Helper method of populateDots()
-function getSizes(data){
-
-    var sizeSet = new Set();
-    var arrayFinal = [];
-
-    for (let str in data) {
+        let sizes = this.getSizes(this.data);
     
-        sizeSet.add(data[str].size); 
-
-    }
-
-    arrayFinal = Array.from([...sizeSet]).sort((a,b) => a-b);    
-
-    return arrayFinal;
-
-}
-
-//Method to go over the data array and check in order the sizes and then populate the order of the dots array by size instead of by entry
-function populateBySize(dots, data, size){
-    for(let str in data){
-        if(data[str].size != size) continue;
+        for(let i = 0; i < sizes.length; i++) this.populateBySize(sizes[i]);
         
-        if(dots[str] === undefined) dots[str] = new Dots(data[str].pos.x, data[str].pos.y, data[str].size, data[str].str, data[str].repeat);
-        else {
+    };
 
-            if(dots[str].repeat < data[str].repeat) dots[str].creationValue = data[str].repeat + 255;
-
-            dots[str].size = data[str].size;
-            dots[str].repeat = data[str].repeat;
+    //Get all sizes on the stringData array, returns the array of unique sizes - Helper method of populateDots()
+    getSizes(data){
+        var sizeSet = new Set();
+        var arrayFinal = [];
+    
+        for (let str in data) {
+        
+            sizeSet.add(data[str].size); 
+    
         }
+    
+        arrayFinal = Array.from([...sizeSet]).sort((a,b) => a-b);    
+    
+        return arrayFinal;
     }
-}
 
+    //Method to go over the data array and check in order the sizes and then populate the order of the dots array by size instead of by entry
+    populateBySize(size){
 
-//Draws each dot, first setting up positions and then creating each ellipse and creating lines connecting said dots
+        for(let str in this.data){
+            if(this.data[str].size != size) continue;
+            
+            if(this.dots[str] === undefined){ 
+            this.dots[str] = new Dots(this.data[str].pos.x, this.data[str].pos.y, this.data[str].size, this.data[str].str, this.data[str].repeat);
+            }
+            else {
+    
+                if(this.dots[str].repeat < data[str].repeat) this.dots[str].creationValue = this.data[str].repeat + 255;
+    
+                this.dots[str].size = this.data[str].size;
+                this.dots[str].repeat = this.data[str].repeat;
+            }
+        };
+
+    };
+
+    //Method that is called if backspace is pressed, it looks in the stringData array for words missing and removes or
+    //decreases the size of the dot object
+    refreshDots(){
+
+        let dots = []
+
+        if(this.data === undefined) {
+            this.dots = dots;
+            return;
+        };
+
+        for(let str in this.dots){
+            
+            if(this.data[str] === undefined) {
+                delete this.dots[str];
+            }else if(this.data[str].size != this.dots[str].size) {
+                this.dots[str].size = this.data[str].size;
+                this.dots[str].repeat = this.data[str].repeat;
+            }
+
+        };
+
+    };
+
+};
+
+/* //Draws each dot, first setting up positions and then creating each ellipse and creating lines connecting said dots
 function drawDots(dots){
 
     for(let str in dots){
@@ -58,27 +91,5 @@ function drawDots(dots){
     }
     
 
-}
-
-//Method that is called if backspace is pressed, it looks in the stringData array for words missing and removes or
-//decreases the size of the dot object
-function refreshDots(dots, data){
-
-    if(data === undefined) {
-        dots =[];
-        return;
-    }
-
-    for(let str in dots){
-        
-        if(data[str] === undefined) {
-            delete dots[str];
-        }else if(data[str].size != dots[str].size) {
-            dots[str].size = data[str].size;
-            dots[str].repeat = data[str].repeat;
-        }
-
-    }
-
-}
+}; */
 
