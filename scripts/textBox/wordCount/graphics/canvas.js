@@ -1,4 +1,6 @@
 import Populator from "./populatingFun.js";
+import Input from "./input.js";
+
 
 //Creating a new class for the P5 Canvas, instantiable
 export default class Canvas{
@@ -6,7 +8,19 @@ export default class Canvas{
     constructor(data, check){
         this.data = data;
         this.check = check;
+        this.space = {
+            pos:    {x:0, y:0},
+            init:   {x:0, y:0},
+            end:    {x:0, y:0},
+            dif:    {x:0, y:0},
+            change: {x:0, y:0},
+            move:   {x:0, y:0},
+            zoom:   1,
+            dontDrag: false
+        };
+
         this.populator;
+        this.input;
         
         //p is the event for the P5 class that represents something like g in graphics class in JAVA
         this.sketch = (p) =>{
@@ -23,6 +37,24 @@ export default class Canvas{
                 p.resizeCanvas(p.windowWidth, p.windowHeight);
     
             };
+
+            this.input = new Input(p.mouseX, p.mouseY);
+
+            p.mouseDragged = () =>{
+                this.input.dragMouse(this.space);
+            };
+            
+            p.mousePressed = () =>{
+                this.input.pressMouse(this.space, this.populator.dots)
+            };
+            
+            p.mouseReleased = () =>{
+                this.input.releaseMouse(this.space);
+            };
+            
+            p.mouseWheel = (e) =>{
+                this.input.mouseWheel(e, this.space);
+            };
     
             p.draw = () =>{
     
@@ -31,7 +63,7 @@ export default class Canvas{
                 
 
             };
-            
+
         };
 
         this.myCanvas = new p5(this.sketch);
@@ -41,18 +73,13 @@ export default class Canvas{
         for(let str in dots){
             dots[str].moveDot(p);
             dots[str].dotBirth(p);
-            dots[str].createPoint(p);
+            dots[str].createDot(p);
         }
     };
 
-    
+};
 
-}
-
-/* var xPos, yPos;
-var initX = 0, endX = 0, difX = 0, changeX = 0, xMove = 0;
-var initY = 0, endY = 0, difY = 0, changeY = 0, yMove = 0;
-var zoom = 1;
+/* 
 
 var bgArray;
 
@@ -70,16 +97,7 @@ function draw(){
     drawDots(dots);    
 }
 
-function hexToRGB(color){
 
-    let rgbValues = color.match(/(?:[^#].{1})/g);
-    let rgbArray = [
-        parseInt(rgbValues[0], 16),
-        parseInt(rgbValues[1], 16),
-        parseInt(rgbValues[2], 16)
-    ];
-    return rgbArray;
-};
 
 //Grid function just in case
 function drawGrid() {
