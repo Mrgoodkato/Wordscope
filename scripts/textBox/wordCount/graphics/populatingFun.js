@@ -2,11 +2,13 @@ import Dots from "./classes/dots.js";
 
 export default class Populator{
 
-    constructor(data, check){
+    constructor(data){
         this.dots = [];
         this.data = data;
-        this.check = check;
-        this.check ? this.populateDots() : this.refreshDots();
+    };
+
+    populateCheck(check){
+        check ? this.populateDots() : this.refreshDots();
     };
     
     //Main populator method to call other population methods from here
@@ -17,6 +19,7 @@ export default class Populator{
         let sizes = this.getSizes(this.data);
     
         for(let i = 0; i < sizes.length; i++) this.populateBySize(sizes[i]);
+        console.log(this.dots);
         
     };
 

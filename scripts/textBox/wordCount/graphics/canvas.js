@@ -1,26 +1,27 @@
+import {hexToRGB} from "./colorProcessing.js";
 import Populator from "./populatingFun.js";
 import Input from "./input.js";
 
+export const space = {
+    pos:    {x:0, y:0},
+    init:   {x:0, y:0},
+    end:    {x:0, y:0},
+    dif:    {x:0, y:0},
+    change: {x:0, y:0},
+    move:   {x:0, y:0},
+    zoom:   1,
+    dontDrag: false
+};
 
 //Creating a new class for the P5 Canvas, instantiable
-export default class Canvas{
+export class Canvas{
 
-    constructor(data, check){
-        this.data = data;
-        this.check = check;
-        this.space = {
-            pos:    {x:0, y:0},
-            init:   {x:0, y:0},
-            end:    {x:0, y:0},
-            dif:    {x:0, y:0},
-            change: {x:0, y:0},
-            move:   {x:0, y:0},
-            zoom:   1,
-            dontDrag: false
-        };
-
-        this.populator;
+    constructor(stringData){
+        this.data = stringData.data;
+        this.limit = stringData.limit;
         this.input;
+        this.bgArray;
+        this.populator = new Populator(this.data);
         
         //p is the event for the P5 class that represents something like g in graphics class in JAVA
         this.sketch = (p) =>{
@@ -41,26 +42,31 @@ export default class Canvas{
             this.input = new Input(p.mouseX, p.mouseY);
 
             p.mouseDragged = () =>{
-                this.input.dragMouse(this.space);
+                this.input.dragMouse(space);
             };
             
             p.mousePressed = () =>{
-                this.input.pressMouse(this.space, this.populator.dots)
+                this.input.pressMouse(space, this.populator.dots, p);
             };
             
             p.mouseReleased = () =>{
-                this.input.releaseMouse(this.space);
+                this.input.releaseMouse(space);
             };
             
             p.mouseWheel = (e) =>{
-                this.input.mouseWheel(e, this.space);
+                this.input.mouseWheel(e, space);
             };
     
             p.draw = () =>{
-    
-                this.populator = new Populator(this.data, this.check);
-                this.drawDots(this.populator.dots, p);
                 
+                this.bgArray = hexToRGB(backgroundColor.value);
+
+                p.background(this.bgArray[0], this.bgArray[1], this.bgArray[2]);
+
+                p.translate(p.mouseX*3, p.mouseY*3);
+                p.scale(space.zoom);
+                p.translate(-p.mouseX*3, -p.mouseY*3);
+                this.drawDots(this.populator.dots, this.limit, p);
 
             };
 
@@ -69,11 +75,11 @@ export default class Canvas{
         this.myCanvas = new p5(this.sketch);
     };
 
-    drawDots(dots, p){
+    drawDots(dots, limit, p){
         for(let str in dots){
-            dots[str].moveDot(p);
-            dots[str].dotBirth(p);
-            dots[str].createDot(p);
+            dots[str].moveDot(p, limit, space);
+            dots[str].dotBirth(p, space);
+            dots[str].createDot(p, space);
         }
     };
 
@@ -87,12 +93,6 @@ var bgArray;
 //Draw dots each frame
 function draw(){
 
-    bgArray = hexToRGB(backgroundColor.value);
-
-    background(bgArray[0], bgArray[1], bgArray[2]);
-    translate(mouseX*3, mouseY*3);
-    scale(zoom);
-    translate(-mouseX*3, -mouseY*3);
     if(grid) drawGrid();
     drawDots(dots);    
 }

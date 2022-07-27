@@ -8,16 +8,18 @@ export default class Input{
 
         this.dragMouse = (space) =>{
 
-            if(isMouseOver() || space.dontDrag || space.zoom > 1) return;
+            if(this.isMouseOver() || space.dontDrag || space.zoom > 1) return;
     
             space.change.x = this.mouseX;
             space.move.x = space.change.x - space.dif.x;
         
             space.change.y = this.mouseY;
             space.move.y = space.change.y - space.dif.y;
+
+            return space;
         };
 
-        this.pressMouse = (space, dots) =>{
+        this.pressMouse = (space, dots, p) =>{
             if(this.isMouseOver()){
                 space.dontDrag = true;
                 return;
@@ -25,7 +27,7 @@ export default class Input{
 
             //Displays the legend in each dot of their size and word
             for(let str in dots){
-                dots[str].display(this.mouseX, this.mouseY);
+                dots[str].display(this.mouseX, this.mouseY, space, p);
             };
 
             if(space.zoom > 1) return;
@@ -38,6 +40,7 @@ export default class Input{
             space.init.y = this.mouseY;
             space.dif.y = space.init.y - space.end.y + space.dif.y;
 
+            return space;
         };
 
         this.releaseMouse = (space) =>{
@@ -51,14 +54,15 @@ export default class Input{
             if(this.isMouseOver()) return;
             
             space.zoom < 1 ? space.zoom = 1 : space.zoom -= e.delta/500;
-        
+            
+            return space;
         };
 
 
     };
 
     //Helperunction used to restrict movement if mouse is in the textbox
-    mouseOver(){
+    isMouseOver(){
         let isOver;
 
         $("#modal:hover").length !== 0 ? isOver = true : isOver = false;

@@ -18,3 +18,4 @@ modal.createModalBtns();
 textBox.createTxtBtns();
 textBox.updateNameOfText();
 
+

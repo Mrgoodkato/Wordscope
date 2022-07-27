@@ -13,8 +13,6 @@ export default class StringData{
 
     //This populates the stringData array that contains the string coordinates (x,y)
     countWords(){
-
-        console.log("limit init ", this.limit);
         
         if(this.stringRaw === null && !this.adding) return;
         this.stringRaw.forEach((str) => {
@@ -54,8 +52,6 @@ export default class StringData{
 
         coordinate.x = Math.abs(coordinate.x);
         coordinate.y = Math.abs(coordinate.y);
-
-        console.log("coord ", coordinate, " limit ", this.limit);
 
         this.limit = this.limitAdapt(this.limit, coordinate);
         

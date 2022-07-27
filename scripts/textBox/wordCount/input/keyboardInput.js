@@ -1,5 +1,5 @@
 import StringData from "../wordOps.js";
-import Canvas from "../graphics/canvas.js";
+import {Canvas} from "../graphics/canvas.js";
 
 export default class KeyEvents{
 
@@ -9,6 +9,7 @@ export default class KeyEvents{
         this.regexDigits = /([\d]*[\d])/;
         this.stringRaw = [];
         this.stringData;
+        this.canvas;
 
         //This will take all input from keyboard and store it as an array of words, even copied and pasted text
         this.textArea.addEventListener("keyup", (event) =>{
@@ -26,12 +27,14 @@ export default class KeyEvents{
             case 'Space': {
                 if(this.stringRaw === null) return;
                 this.stringData = new StringData(this.stringRaw, true);
-                new Canvas(this.stringData.data, true);
+                this.canvas = new Canvas(this.stringData);
+                this.canvas.populator.populateCheck(true);
                 break;
             };
             case 'Backspace': {
-                new StringData(this.stringRaw, false);
-                new Canvas(this.stringData.data, false);
+                this.stringData = new StringData(this.stringRaw, false);
+                this.canvas = new Canvas(this.stringData);
+                this.canvas.populator.populateCheck(false);
                 break;
             };       
         };
