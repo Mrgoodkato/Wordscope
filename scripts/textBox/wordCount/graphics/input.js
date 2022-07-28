@@ -1,10 +1,10 @@
 export default class Input{
 
     //Taken from excercise one JAVA project mouse calculations
-    constructor(mouseX, mouseY){
+    constructor(){
 
-        this.mouseX = mouseX;
-        this.mouseY = mouseY;
+        this.mouseX;
+        this.mouseY;
 
         this.dragMouse = (space) =>{
 
@@ -15,8 +15,6 @@ export default class Input{
         
             space.change.y = this.mouseY;
             space.move.y = space.change.y - space.dif.y;
-
-            return space;
         };
 
         this.pressMouse = (space, dots, p) =>{
@@ -27,7 +25,7 @@ export default class Input{
 
             //Displays the legend in each dot of their size and word
             for(let str in dots){
-                dots[str].display(this.mouseX, this.mouseY, space, p);
+                dots[str].isDisplay(this.mouseX, this.mouseY, space.move, p);
             };
 
             if(space.zoom > 1) return;
@@ -40,7 +38,6 @@ export default class Input{
             space.init.y = this.mouseY;
             space.dif.y = space.init.y - space.end.y + space.dif.y;
 
-            return space;
         };
 
         this.releaseMouse = (space) =>{
@@ -51,13 +48,13 @@ export default class Input{
 
         this.mouseWheel = (e, space) =>{
 
-            if(this.isMouseOver()) return;
+            if(this.isMouseOver()) return space.zoom;
             
-            space.zoom < 1 ? space.zoom = 1 : space.zoom -= e.delta/500;
-            
-            return space;
-        };
+            space.zoom -= e.delta/500;
 
+            if(space.zoom < 1) space.zoom = 1;
+            
+        };
 
     };
 

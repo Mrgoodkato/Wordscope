@@ -1,3 +1,12 @@
+//Testing vars
+var indexTest = 0;
+
+//Graphics options buttons grabbed from HTML
+const gridBtn = document.getElementById('show-grid');
+
+//Variables to be passed to P5
+var grid = true;
+
 //Color chooser for the background
 const backgroundColor = document.getElementById('background-color-picker');
 
@@ -90,4 +99,11 @@ function themeGet(element){
 function changeCanvas(mapObj){
   colorPicker.value = mapObj.primary;
   backgroundColor.value = mapObj.secondary;
-}
+};
+
+//Grid option
+gridBtn.addEventListener('click', ()=>{
+
+  grid = grid ? false : true;
+
+});

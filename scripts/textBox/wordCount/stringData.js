@@ -3,18 +3,15 @@ import {checkDictionary} from "./dictionary/dictionaryFun.js";
 
 export default class StringData{
 
-    constructor(stringRaw, adding){
+    constructor(stringRaw){
         this.data = [];
         this.stringRaw = stringRaw;
-        this.adding = adding;
         this.limit = {x: 0, y:0};
-        this.countWords();
     };
 
     //This populates the stringData array that contains the string coordinates (x,y)
-    countWords(){
-        
-        if(this.stringRaw === null && !this.adding) return;
+    countWords(adding){
+        if(this.stringRaw === null && !adding) return;
         this.stringRaw.forEach((str) => {
             this.typeOfWord(str);
         });
@@ -54,7 +51,6 @@ export default class StringData{
         coordinate.y = Math.abs(coordinate.y);
 
         this.limit = this.limitAdapt(this.limit, coordinate);
-        
         return coordinate;
         
     };

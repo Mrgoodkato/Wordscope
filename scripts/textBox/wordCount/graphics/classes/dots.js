@@ -1,5 +1,5 @@
 import setDotColor from "../colorProcessing.js";
-import {randomRange} from "../mathOps.js"
+import {randomRange} from "../mathOps.js";
 
 //Class that constructs each dot.
 export default class Dots{
@@ -25,13 +25,12 @@ export default class Dots{
 
     //Creates each ellipse object in screen based on the x and y values already calculated each frame
     createDot(p, space){
-        p.fill(setDotColor(255, false, p));
+        p.fill(setDotColor(255, false, p, this.repeat));
         p.noStroke();
         p.push();
         p.translate(space.move.x, space.move.y);
-        p.fill(255);
         p.ellipse(this.x, this.y, this.size+p.random(1,2));
-        this.display(p.mouseX, p.mouseY, space, p);
+        this.display(space, p);
         p.pop();
     };
 
@@ -65,12 +64,12 @@ export default class Dots{
     };
 
     //Method for displaying the information on each dot object when mouse is over it
-    display(mouseX, mouseY, space, p){
-        if(!this.isDisplay(mouseX, mouseY, space.move, p)) return;
+    display(space, p){
+        if(!this.showDisplay) return;
         let information = this.str + '| Repeated -- ' + this.repeat + ' times';
         p.fill(25);
         p.rect(this.x - 5/space.zoom, this.y - 8/space.zoom, Math.floor(information.length*5.5)/space.zoom, 10/space.zoom, 2);
-        p.fill(setDotColor(255, true));
+        p.fill(setDotColor(255, true, p, this.repeat));
         p.textSize(10/space.zoom);
         p.text(information, this.x, this.y);
     };
@@ -81,7 +80,7 @@ export default class Dots{
         if(distance <= this.size+5){
             this.showDisplay = this.showDisplay ? false : true;
         };
-    }
+    };
 };
 
 

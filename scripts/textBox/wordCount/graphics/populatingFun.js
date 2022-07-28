@@ -2,13 +2,14 @@ import Dots from "./classes/dots.js";
 
 export default class Populator{
 
-    constructor(data){
+    constructor(){
         this.dots = [];
-        this.data = data;
+        this.data = [];
     };
 
     populateCheck(check){
         check ? this.populateDots() : this.refreshDots();
+        console.log(this.limit);
     };
     
     //Main populator method to call other population methods from here
@@ -19,7 +20,6 @@ export default class Populator{
         let sizes = this.getSizes(this.data);
     
         for(let i = 0; i < sizes.length; i++) this.populateBySize(sizes[i]);
-        console.log(this.dots);
         
     };
 
@@ -50,7 +50,7 @@ export default class Populator{
             }
             else {
     
-                if(this.dots[str].repeat < data[str].repeat) this.dots[str].creationValue = this.data[str].repeat + 255;
+                if(this.dots[str].repeat < this.data[str].repeat) this.dots[str].creationValue = this.data[str].repeat + 255;
     
                 this.dots[str].size = this.data[str].size;
                 this.dots[str].repeat = this.data[str].repeat;
@@ -82,6 +82,5 @@ export default class Populator{
         };
 
     };
-
 };
 

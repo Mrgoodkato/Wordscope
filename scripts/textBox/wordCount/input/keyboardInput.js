@@ -1,5 +1,7 @@
-import StringData from "../wordOps.js";
-import {Canvas} from "../graphics/canvas.js";
+import StringData from "../stringData.js";
+import Populator from "../graphics/populatingFun.js";
+import {allocateDots} from "../graphicData.js"
+
 
 export default class KeyEvents{
 
@@ -7,14 +9,16 @@ export default class KeyEvents{
         this.textArea = textArea;
         this.regex = /[\u00C0-\u00FF\w]*[\w\u00C0-\u00FF\w]/gm;
         this.regexDigits = /([\d]*[\d])/;
-        this.stringRaw = [];
-        this.stringData;
-        this.canvas;
+        this.stringRaw = this.stringRawCreate(this.textArea.textContent);
+        this.stringData = new StringData(this.stringRaw);
+        this.populator = new Populator();
 
         //This will take all input from keyboard and store it as an array of words, even copied and pasted text
         this.textArea.addEventListener("keyup", (event) =>{
             
+            this.stringData.data = [];
             this.stringRaw = this.stringRawCreate(this.textArea.textContent);
+            this.stringData.stringRaw = this.stringRaw;
             this.keyInput(event);
         });
 
@@ -26,15 +30,11 @@ export default class KeyEvents{
             case 'Enter':
             case 'Space': {
                 if(this.stringRaw === null) return;
-                this.stringData = new StringData(this.stringRaw, true);
-                this.canvas = new Canvas(this.stringData);
-                this.canvas.populator.populateCheck(true);
+                this.populateAll(true);
                 break;
             };
             case 'Backspace': {
-                this.stringData = new StringData(this.stringRaw, false);
-                this.canvas = new Canvas(this.stringData);
-                this.canvas.populator.populateCheck(false);
+                this.populateAll(false);
                 break;
             };       
         };
@@ -49,6 +49,14 @@ export default class KeyEvents{
             };
         };
         return initStringRaw;
+    };
+
+    //Handles the String Data object and then populates the dots through the Populator class
+    populateAll(isEnter){
+        this.stringData.countWords(isEnter);
+        this.populator.data = this.stringData.data;
+        this.populator.populateCheck(isEnter);
+        allocateDots(this.populator.dots, this.stringData.limit);
     };
 
 };
