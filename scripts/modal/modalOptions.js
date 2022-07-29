@@ -1,3 +1,5 @@
+import { focusCaret } from "./focusTextBox.js";
+
 //Big ass function switching between changes done in different DOM elements
 export default function modalAction(btn, textArea){
     
@@ -60,6 +62,7 @@ function txtBoxAction(txtMenu, textArea){
         txtMenu.style.animation = "displayEditor";
         txtMenu.style.animationDuration = "1s";
         textArea.focus();
+        focusCaret(textArea);
         txtMenu.dataset.state = 'open';
     }else{
         txtMenu.style.display = "none";

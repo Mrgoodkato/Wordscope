@@ -25,6 +25,11 @@
 
 }
 
+.text-area-title{
+    display: inherit;
+    font-weight: $font-weight-bold;
+}
+
 @each $key, $var in $font-sizes {
     .font-size-#{$key}{
         font-size: $var;

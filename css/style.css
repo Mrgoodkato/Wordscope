@@ -4462,6 +4462,11 @@ html, body {
   font-family: "Archivo Black", sans-serif;
 }
 
+.text-area-title {
+  display: inherit;
+  font-weight: 1000;
+}
+
 .font-size-xs {
   font-size: 0.6rem;
 }

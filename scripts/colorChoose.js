@@ -1,6 +1,3 @@
-//Testing vars
-var indexTest = 0;
-
 //Graphics options buttons grabbed from HTML
 const gridBtn = document.getElementById('show-grid');
 
