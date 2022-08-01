@@ -8,7 +8,7 @@ export function focusCaret(textArea){
     var sel = window.getSelection();
 
     //So we select the first childNode of the textArea (title of doc) then move at the end of that node, using the 1
-    range.setStart(textArea.childNodes[1], 0);
+    range.setStart(textArea.childNodes[0], 0);
     range.collapse(true);
 
     //This resets the ranges in the window.getSelection() element

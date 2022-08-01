@@ -1,9 +1,9 @@
 import KeyEvents from "./input/keyboardInput.js";
 
 export default class WordCounter{
-    constructor(textArea){
+    constructor(textArea, fileNameInstance){
         this.textArea = textArea;
-        this.keyEvents = new KeyEvents(this.textArea);
+        this.keyEvents = new KeyEvents(this.textArea, fileNameInstance);
         this.regexPaste = /<(?!(\/\s*)?(a|b|i|em|s|strong|u)[>,\s])([^>])*>/g;
         this.pasteRestrictor();
     }

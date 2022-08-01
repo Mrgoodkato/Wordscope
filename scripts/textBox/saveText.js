@@ -2,7 +2,9 @@
 export function saveTxt(textArea, fileName){
 
     const a = document.createElement('a');
-    const blob = new Blob([textArea.innerText]);
+    let finalText = fileName + '\n\n' + textArea.innerText;
+
+    const blob = new Blob([finalText]);
     const dataUrl = URL.createObjectURL(blob);
     a.href = dataUrl;
     a.download = fileName + '.txt';
@@ -14,7 +16,7 @@ export function saveTxt(textArea, fileName){
 export function export2Word(textArea, filename){
     const preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
     const postHtml = "</body></html>";
-    const html = preHtml+textArea.innerHTML+postHtml;
+    const html = preHtml+'<h1>'+filename+'</h1><br><br>'+textArea.innerHTML+postHtml;
 
     var blob = new Blob(['\ufeff', html], {
         type: 'application/msword'
@@ -59,55 +61,69 @@ export function export2PDF(textArea, fileName){
         format: 'letter'
     });
 
+    let testNum = 0;
+    let y = 20;
+    let p = 0;
+
     //Created a splitTextToSize array, it takes the whole textarea.inner text string and divides it
     //into an array of strings according to the size put in the second arg.
     const splitTxt = doc.splitTextToSize(textArea.innerText, 250);
-
-    //Creates the title of the PDF, only at the beginning of the PDF
-    const createTitle = () =>{
-        doc.setFontSize(8);
-        doc.text("Created using Wordscope", 5, 5);
-    };
 
     //Renders all the text in the PDF, accepts a y value for the line height between lines
     //Also accepts the p value, index of current page being rendered
     const createText = (y, p) =>{
 
+        //Creates the title of the PDF, both at beginning and in each page as a header
+        const createTitle = (isSmall) =>{
+
+            if(isSmall === false) {
+                doc.setFontSize(16);
+                doc.text(fileName, 15, 15);
+
+            }else if (isSmall === true){
+                doc.setFontSize(8);
+                doc.text(fileName, 5, 5);
+            };
+        };
+
         //Renders the PAGE NUMBER based on the p index
-        const pageRender = (p) =>{
+        const pageRender = (i, isSmTitle) =>{
+            let page = "Page: " + (i+1);
+            doc.setPage(i+1);
+            createTitle(isSmTitle);
             doc.setFontSize(8);
-            let page = "Page: " + (p+1);
-            doc.setPage(p+1);
             doc.text(page, doc.getPageWidth() - 30, doc.getPageHeight() - 10);
         };
-    
-        //Restricts the PAGE NUMBER function to execute only in 3 situations:
-        //1) When its the beginning of all the text
-        //2) Right after a new page is created
-        //3) When we render the final line of text in the whole file
-        const pageLimit = (i, p, y) =>{
-            if(i === 0) pageRender(p);
-            else if(y > doc.getPageHeight() - 40) pageRender(p);
-            else if(i === splitTxt.length-1) pageRender(p);
+
+        const populatePage = () =>{
+            doc.setFont('helvetica','normal');
+            for(let i = 0; i < splitTxt.length; i++){
+                if(y > doc.getPageHeight() - 40){
+                    y = 15;
+                    p++;
+                    doc.addPage();
+                }
+                doc.setFontSize(12);
+                doc.text(splitTxt[i], 15, y);
+                y += 5;
+            };
         };
 
-        for(let i = 0; i < splitTxt.length; i++){
-            pageLimit(i, p, y);
-            if(y > doc.getPageHeight() - 40){
-                y = 15;
-                p++;
-                doc.addPage();
-            }
-            doc.setFontSize(12);
-            doc.text(splitTxt[i], 10, y);
-            y += 5;
+        const populateTitles = () =>{
+            doc.setFont('helvetica','bold');
+            for(let i = 0; i <= p; i++){
+                
+                i === 0 ? pageRender(i, false) : pageRender(i, true);
+            
+            };
         };
+
+        populatePage();
+        populateTitles();    
     };
 
-    let y = 20;
-    let p = 0;
+    
 
-    createTitle();
     createText(y, p);
 
     doc.save(fileName + ".pdf");

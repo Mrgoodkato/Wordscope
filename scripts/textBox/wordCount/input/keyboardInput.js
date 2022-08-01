@@ -5,7 +5,7 @@ import {allocateDots} from "../graphicData.js"
 
 export default class KeyEvents{
 
-    constructor(textArea){
+    constructor(textArea, fileNameInstance){
         this.textArea = textArea;
         this.regex = /[\u00C0-\u00FF\w]*[\w\u00C0-\u00FF\w]/gm;
         this.regexDigits = /([\d]*[\d])/;

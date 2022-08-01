@@ -13,7 +13,7 @@ export default class TextBox{
         this.textArea = textArea;    
 
         //Start the WordCounter class and its functions, dependant on this class
-        this.wordCount = new WordCounter(textArea);
+        this.wordCount = new WordCounter(this.textArea, this.fileNameInstance);
     };
 
     createTxtBtns(){
@@ -25,7 +25,7 @@ export default class TextBox{
 
     updateNameOfText(){
         
-        this.fileNameInstance.innerHTML = "Start writting here";
+        this.fileNameInstance.innerText = "Start writting here";
         
         this.fileName.addEventListener('keyup', ()=>{
 
