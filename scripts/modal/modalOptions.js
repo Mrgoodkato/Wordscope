@@ -1,4 +1,4 @@
-import { focusCaret } from "./focusTextBox.js";
+import { focusCaret } from "./modTextBox.js";
 
 //Big ass function switching between changes done in different DOM elements
 export default function modalAction(btn, textArea){

@@ -1,5 +1,6 @@
 import { textArea } from "../elements/variablesDOM.js";
 import { saveTxt, export2PDF, export2Word } from "./saveText.js";
+import { selectionToChange } from "../modal/modTextBox.js";
 
 export function colorSelect(btn, textArea){
     textArea.focus();
@@ -16,10 +17,10 @@ export function txtBtnSelector(btn, textArea, filename){
             formatBtns(btn, textArea);
             break;
         case 'text-size':
-            dropBtns(btn, 'size');
+            dropBtns(textArea, btn, 'size');
             break;
         case 'text-align':
-            dropBtns(btn, 'align');
+            dropBtns(textArea, btn, 'align');
             break;
         case 'save-txt':
             saveTxt(textArea, filename);
@@ -57,14 +58,15 @@ function formatBtns(btn, textArea){
 };
 
 //Function to align-set size of btns
-function dropBtns(btn, type){
+function dropBtns(textArea, btn, type){
 
     if(!checkSelection()) return;
 
     switch(type){
         case 'align': {
-            console.log(selection.style.textAlign);
-            selection.style.textAlign = btn.name;
+            selectionToChange(textArea);
+            console.log(selectionToChange(textArea));
+            /* selection.style.textAlign = btn.name; */
             break;
         }
         case 'size': {

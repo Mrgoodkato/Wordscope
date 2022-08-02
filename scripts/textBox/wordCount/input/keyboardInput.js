@@ -1,6 +1,7 @@
 import StringData from "../stringData.js";
 import Populator from "../graphics/populatingFun.js";
 import {allocateDots} from "../graphicData.js"
+import { avoidDeletion } from "../../../modal/modTextBox.js";
 
 
 export default class KeyEvents{
@@ -14,8 +15,9 @@ export default class KeyEvents{
         this.populator = new Populator();
 
         //This will take all input from keyboard and store it as an array of words, even copied and pasted text
-        this.textArea.addEventListener("keyup", (event) =>{
+        this.textArea.addEventListener("keydown", (event) =>{
             
+            avoidDeletion(this.textArea, event);
             this.stringData.data = [];
             this.stringRaw = this.stringRawCreate(this.textArea.textContent);
             this.stringData.stringRaw = this.stringRaw;
