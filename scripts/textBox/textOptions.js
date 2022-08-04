@@ -1,6 +1,6 @@
 import { textArea } from "../elements/variablesDOM.js";
 import { saveTxt, export2PDF, export2Word } from "./saveText.js";
-import { selectionToChange } from "../modal/modTextBox.js";
+import { selectionToChange, clearSelection, selectWord } from "../modal/modTextBox.js";
 
 export function colorSelect(btn, textArea){
     textArea.focus();
@@ -45,6 +45,7 @@ function formatBtns(btn, textArea){
     textArea.focus();
     switch (btnFormat){
         case 'bold':
+            /* selectWord(); */
             document.execCommand('bold', false);
             break;
         case 'italic':
@@ -64,13 +65,15 @@ function dropBtns(textArea, btn, type){
 
     switch(type){
         case 'align': {
-            selectionToChange(textArea);
-            console.log(selectionToChange(textArea));
-            /* selection.style.textAlign = btn.name; */
-            break;
+            let selectNode = selectionToChange();
+            selectNode.style.textAlign = btn.name;
+            clearSelection();
+            break;  
         }
         case 'size': {
-            selection.style.fontSize = btn.name;
+            let selectNode = selectionToChange();
+            selectNode.style.fontSize = btn.name;
+            clearSelection();
             break;
         }
     };
