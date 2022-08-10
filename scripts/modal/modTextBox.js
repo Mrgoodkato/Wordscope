@@ -43,7 +43,6 @@ export function selectionToChange(){
 //Helper function to grab the main paragraph information by going into all the parent nodes possible until reaching <p>
 function recursiveParentSearch(selectNode){
     if(selectNode.nodeName !== 'P' && selectNode.nodeName !== 'DIV'){
-        console.log(selectNode);
         selectNode = selectNode.parentNode;
         recursiveParentSearch(selectNode);
         return selectNode;
@@ -62,15 +61,3 @@ export function clearSelection(){
     selection.removeAllRanges();
     selection.addRange(range);
 };
-
-export function selectWord(){
-    let selection = document.getSelection();
-    let offset = selection.getRangeAt(0).startOffset-1;
-    let range = document.createRange();
-
-    
-    range.selectNode(selection.anchorNode);
-    range.surroundContents(document.createElement('b'));
-
-};
-

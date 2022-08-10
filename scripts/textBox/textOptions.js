@@ -1,6 +1,7 @@
 import { textArea } from "../elements/variablesDOM.js";
 import { saveTxt, export2PDF, export2Word } from "./saveText.js";
-import { selectionToChange, clearSelection, selectWord } from "../modal/modTextBox.js";
+import { selectionToChange, clearSelection } from "../modal/modTextBox.js";
+import { selectWord } from "../modal/writtingMods.js";
 
 export function colorSelect(btn, textArea){
     textArea.focus();
@@ -45,8 +46,8 @@ function formatBtns(btn, textArea){
     textArea.focus();
     switch (btnFormat){
         case 'bold':
-            /* selectWord(); */
-            document.execCommand('bold', false);
+            selectWord('b');
+            /* document.execCommand('bold', false); */
             break;
         case 'italic':
             document.execCommand('italic', false);

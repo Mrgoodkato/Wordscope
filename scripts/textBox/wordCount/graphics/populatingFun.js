@@ -9,7 +9,6 @@ export default class Populator{
 
     populateCheck(check){
         check ? this.populateDots() : this.refreshDots();
-        console.log(this.limit);
     };
     
     //Main populator method to call other population methods from here
@@ -28,11 +27,7 @@ export default class Populator{
         var sizeSet = new Set();
         var arrayFinal = [];
     
-        for (let str in data) {
-        
-            sizeSet.add(data[str].size); 
-    
-        }
+        for (let str in data) sizeSet.add(data[str].size); 
     
         arrayFinal = Array.from([...sizeSet]).sort((a,b) => a-b);    
     

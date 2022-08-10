@@ -8,7 +8,6 @@ export function avoidDeletion(textArea, e){
     if(innerLength === 0){
         e.preventDefault();
         textArea.innerHTML = '<p>&nbsp</p>';
-        console.log(beginNode);
         sel.setBaseAndExtent(beginNode[0].firstChild, 0, beginNode[0].firstChild, 0);
     }
 };
