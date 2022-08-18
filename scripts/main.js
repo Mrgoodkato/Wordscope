@@ -15,7 +15,7 @@ const textBox = new TextBox(textArea);
 const myCanvas = new p5(sketch);
 
 //Function declaration
-dragModal();
+dragModalElement();
 modal.createModalBtns();
 textBox.createTxtBtns();
 textBox.updateNameOfText();
