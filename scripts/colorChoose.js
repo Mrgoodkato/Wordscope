@@ -2,7 +2,7 @@
 const gridBtn = document.getElementById('show-grid');
 
 //Variables to be passed to P5
-var grid = true;
+var grid = false;
 
 //Color chooser for the background
 const backgroundColor = document.getElementById('background-color-picker');
