@@ -46,8 +46,8 @@ function formatBtns(btn, textArea){
     textArea.focus();
     switch (btnFormat){
         case 'bold':
-            selectWord('b');
-            /* document.execCommand('bold', false); */
+            /* selectWord('b'); */
+            document.execCommand('bold', false);
             break;
         case 'italic':
             document.execCommand('italic', false);

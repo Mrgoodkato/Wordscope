@@ -29,6 +29,11 @@ export default class KeyEvents{
     //Handles the functions called when pressing ENTER, SPACE and BACKSPACE that link to the P5 canvas and creates the graphics
     keyInput(event){
         switch(event.code){
+            case 'AltLeft': {
+                console.log(this.textArea.innerHTML);
+                break;
+            }
+
             case 'Enter':
             case 'Space': {
                 if(this.stringRaw === null) return;
