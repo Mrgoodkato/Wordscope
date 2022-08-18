@@ -1,6 +1,7 @@
 //We import the modalAction function from modalOptions to add the listeners and other functionality to the modalBtns
 import modalAction from "./modalOptions.js";
 
+
 export default class Modal{
 
   constructor(textArea){

@@ -2,7 +2,7 @@
 import {textArea} from "./elements/variablesDOM.js";
 
 //Function imports
-import dragModal from "./modal/dragModal.js";
+import dragModalElement from "./modal/dragModal.js";
 import { sketch } from "./p5Canvas.js";
 
 //Class imports
