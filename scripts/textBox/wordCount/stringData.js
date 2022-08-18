@@ -22,10 +22,10 @@ export default class StringData{
         if(this.data[str] === undefined) {
             this.addWord(str, true);
         } else {
-            checkDictionary(str) ? (str) =>{
-                let rep = data[str].repeat + 1;
-                data[str] = {size: 2, str: str, repeat: rep, pos: this.processWord(str)}
-            } : this.addWord(str, false);
+            if(checkDictionary(str) === true){
+                let rep = this.data[str].repeat + 1;
+                this.data[str] = {size: 2, str: str, repeat: rep, pos: this.processWord(str)}
+            }else this.addWord(str, false);
         }
     };
 

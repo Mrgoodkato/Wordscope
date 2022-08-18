@@ -10,5 +10,6 @@ export function checkDictionary(str){
             break;
         }
     }
+    console.log(result)
     return result;
 };
