@@ -1,5 +1,7 @@
+import { focusCaret } from "./modTextBox.js";
+
 //Big ass function switching between changes done in different DOM elements
-export function modalAction(btn){
+export default function modalAction(btn, textArea){
     
     const btnName = btn.getAttribute('data-modalBtn');
 
@@ -18,7 +20,7 @@ export function modalAction(btn){
         
         case 'txt-btn':
             const txtMenu = document.querySelector('[data-modal=txt-menu]');
-            txtBoxAction(txtMenu);
+            txtBoxAction(txtMenu, textArea);
             break;
     }
 };
@@ -50,8 +52,8 @@ function animationStyle(name){
 
 };
 
-//Stand alone function for the textbox display and hidden states
-function txtBoxAction(txtMenu){
+//Helper function for the textbox display and hidden states
+function txtBoxAction(txtMenu, textArea){
 
     let stateMenu = txtMenu.getAttribute('data-state');
 
@@ -59,7 +61,8 @@ function txtBoxAction(txtMenu){
         txtMenu.style.display = "block";
         txtMenu.style.animation = "displayEditor";
         txtMenu.style.animationDuration = "1s";
-        document.getElementById('textarea1').focus();
+        textArea.focus();
+        focusCaret(textArea);
         txtMenu.dataset.state = 'open';
     }else{
         txtMenu.style.display = "none";
