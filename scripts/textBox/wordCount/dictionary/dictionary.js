@@ -8,6 +8,6 @@ export const dictionary = [
     "ha", "he", "habemos", "hemos", "han",
     "have", "had", "has", "hadn't", "hasn't", "haven't", "was", "is", "were", "weren't", "wasn't", "isn't",
     "to", "not", "his", "her", "their", "theirs", "hers", "its", "it's",
-    "my", "by", "me", "as", "but", "for", "with", "from", "which", "one", "s", "t", "be", "all",
+    "my", "by", "me", "as", "but", "for", "with", "from", "which", "one", "be", "all",
     "when", "been"
 ]
